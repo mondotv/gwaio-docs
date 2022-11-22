@@ -59,21 +59,21 @@ Esta información se muestra en forma de tabla, donde cada tarea es una fila y c
 
 Las teclas de control y shift funcionan igual que en el explorador de windows y permite seleccionar varias tareas.  
 
-![Workspace](img/panel-task-general-interface.png "Workspace")
+![Panel task](img/panel-task-general-interface.png "Panel task")
 
 
 ### Panel de Ficheros 
 
 El “Panel de Ficheros” muestra los ficheros existentes para la tarea seleccionada en el “Panel de Tareas”. Si no hay ninguna tarea seleccionada, este menú se muestra vació. A continuación, se muestran dos imágenes, la primera con ninguna tarea seleccionada y la segunda con una tarea seleccionada. Si se seleccionan varias tareas, el “Panel de Ficheros” muestra la última tarea seleccionada. 
 
-![Workspace](img/panel-task-item-unselected.png "Workspace")  
+![Unselected panel task](img/panel-task-item-unselected.png "Unselected panel task")  
 
 ![Workspace](img/panel-task-item-selected.png "Workspace")
 
 
 Adicionalmente el “Panel de Ficheros” tiene una barra de navegación y un botón para subir a la carpeta continente de la carpeta que se muestra actualmente. 
 
-![Workspace](img/panel-files-path-editor.png "Workspace")
+![Panel task with selected task](img/panel-files-path-editor.png "Panel task with selected task")
 
 
 Si se pone una dirección válida y se pulsa la tecla “Enter”, el “Panel de Ficheros” se actualiza a la ruta escrita. 
@@ -97,7 +97,7 @@ Además, tiene funcionalidades similares a la de cualquier explorador de archivo
 
 La “Barra de Menus” se sitúa en la parte superior de la aplicación y tiene la siguiente disposición: 
 
-![Workspace](img/toolbar-menu.png "Workspace")
+![Toolbar menu](img/toolbar-menu.png "Toolbar menu")
 
 * File: contiene tres acciones: 
   * Update pipeline: Cuando haya alguna actualización de GwaIO se deberá pulsar este botón para obtenerla. 
@@ -122,7 +122,7 @@ Muestra diversos mensajes dependiendo de cuál sea la última acción hecha por 
 
 Las barras de herramientas, también conocidas como “toolbars” se pueden ocultar, mostrar, desacoplar de la interfaz o mover de posición al gusto del usuario. Cada una de estas barras de herramientas contienen bonotes con funcionalidades que se describen a continuación. 
 
-![Workspace](img/multiples-toolbars.png "Workspace")
+![Multiples toolbars](img/multiples-toolbars.png "Multiples toolbars")
 
 Algunas barras de herramientas (Toolbars). 
 
@@ -151,7 +151,7 @@ Contiene funcionalidades relacionadas con Shotgrid.
 
 Los paneles secundarios muestran información adicional de las tareas y contienen herramientas de utilidad para facilitar el trabajo. 
 
-![Workspace](img/multiples-dock-panels.png "Workspace")  
+![Dock panels](img/multiples-dock-panels.png "Dock panels")  
 Algunos paneles secundarios agrupados. 
 
 Estos paneles y barras de herramientas se pueden ocultar, mostrar, agrupar o desacoplar de la interfaz o mover de posición al gusto del usuario: 
@@ -162,25 +162,45 @@ Estos paneles y barras de herramientas se pueden ocultar, mostrar, agrupar o des
 
 * Para mostrar/ocultar los paneles, haga clic en View, que se encuentra en la barra de menú en la parte superior de la ventana, y seleccione o deseleccione los paneles que desee modificar. 
 
-## Panel de Configuración 
+### Panel de Configuración 
 
 En este panel puede ver la información de la configuración del programa. Generalmente no se debería editar directamente, ya que se edita automáticamente con el uso del propio programa. 
 
-## Panel de Filtrado 
+### Panel de Filtrado 
 
 Permite al usuario filtrar las tareas visibles en el “Panel de Tareas”. Hay un filtro por cada columna que aparece en este panel. Los filtros se pueden combinar entre sí. Cuando un filtro este activo su campo de texto es de color azul. 
 
-![Workspace](img/panel-filter-general-interface.png "Workspace") 
+![Panel Filter](img/panel-filter-general-interface.png "Panel Filter") 
 
 Active la casilla “is not” para invertir el filtro. Esta acción hace que se invierta su funcionamiento y nos muestre las tareas que no contengan el texto introducido en el filtro. Esta acción cambia el color del campo del filtro a marrón. 
 
-![Workspace](img/panel-filter-is-not-actived.png "Workspace")  
-![Workspace](img/panel-filter-actived.png "Workspace") 
+![Panel filter 'is not' actived](img/panel-filter-is-not-actived.png "Panel filter 'is not' actived")  
+![Panel filter actived](img/panel-filter-actived.png "Panel filter actived") 
 
 Haga clic en el icono de la “x” situado a la derecha del filtro para borrar por completo el texto. Alternativamente también puede el usuario borrarlo manualmente con las herramientas comunes de edición de texto. 
 
 Los filtros tienen un sistema para autocompletar. Puede añadir varios tags de filtro separándo dichos tags con el signo “;”. 
 
-![Workspace](img/panel-filter-multiples-tags.png "Workspace") 
+![Panel filter multiples tags](img/panel-filter-multiples-tags.png "Panel filter multiples tags") 
 
 Si el usuario activa la casilla “is not” y deja vacío el filtro, el “Panel de Tareas” no mostrará ninguna tarea. 
+
+### Panel de Hilos 
+
+Panel técnico donde se muestra el listado de todos los hilos de proceso abiertos, finalizados y a la espera en el programa. No es relevante para el usuario. 
+
+ 
+![Panel Threads](img/panel-threads-general-interface.png "Panel Threads") 
+ 
+
+### Panel de Sincronización 
+
+Panel técnico donde se muestra el log de los archivos y carpetas sincronizadas. Además, este panel contiene los mismos botones de sincronizado de la "Barra de herramientas de sincronización". 
+
+### Panel de Reproducción 
+
+Reproductor y visualizador de contenido multimedia. Reproduce el último fichero seleccionado en el “Panel de Ficheros”. También reproduce la miniatura (si la hay en el sistema de ficheros local) de la última tarea seleccionada. 
+
+### Panel de Notas 
+
+Panel que recoge todas las notas que contenga la tarea seleccionada en el “Panel de Tareas”. Haga clic en una nota o imagen para abrirla en el navegador web. Adicionalmente, en la parte superior del panel se muestra la descripción de la tarea, si la tiene. 
