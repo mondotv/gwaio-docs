@@ -169,13 +169,13 @@ Para mostrar/ocultar las barras de herramientas, haga clic en Toolbars y/o <"Nom
 
 | Icono        | Nombre del botón | Acción  |
 | ------------ |:----------------:|:--------|
-||Open local folder | Abre la carpeta local de la tarea seleccionada. Esto es, la carpeta de la tarea dentro del sistema de ficheros local del ordenador que está ejecutando la aplicación. 
-||Open server folder | Abre la carpeta del server de la tarea seleccionada. Esto es, la carpeta de la tarea dentro del sistema de ficheros del servidor que está ejecutando la aplicación. Si el ordenador está en remoto, necesitará una VPN para acceder a esta carpeta. 
-||Open documentation | Abre la carpeta que contiene los ficheros de la documentación. Esta carpeta suele estar en la raíz del programa y se llama “documents”. 
-||Add version | Crea un nuevo fichero para la tarea seleccionada. El número de version elegido se calcula como una unidad superior a la mayor versión encontrada en el sistema de ficheros local. Tiene varias opciones:<ul><li>From selected file: Crea una nueva versión en la tarea seleccionada a partir del archivo seleccionado en el explorador de ficheros.<li>From <"extensión"> file: Crea una nueva versión en la tarea seleccionada de la extensión dada por el submenú del botón. (<"extensión"> es equivalente al formato del archivo de versión que se desee) <li>Cuando no hay ningún archivo, el programa recogerá la última versión de la tarea anterior. En caso de no haber tarea anterior o esta tarea no tuviese ningún archivo, se abrirá la carpeta de “Templates” asociada a su proyecto. 
-||Conversor | Cambia el formato de un archivo multimedia. Necesita tener instalado FFmpeg para que funcione. Actualmente existen dos tipos de conversión: de mp4 a mov y de gif a mov, en caso de necesitar conversiones adicionales se pueden pedir a los desarrolladores. 
-||Publish version | Abre la ventana de publicador de versiones. Para más información consulte el epígrafe de “Diálogo de Publicación”. 
-||Renamer tool | Abre la ventana de renombrado de archivos. Más información bajo el epígrafe “Panel de Renombrado”. 
+|![Button](img/explorer_local.png "Button")|Open local folder | Abre la carpeta local de la tarea seleccionada. Esto es, la carpeta de la tarea dentro del sistema de ficheros local del ordenador que está ejecutando la aplicación. 
+|![Button](img/explorer_server.png "Button")|Open server folder | Abre la carpeta del server de la tarea seleccionada. Esto es, la carpeta de la tarea dentro del sistema de ficheros del servidor que está ejecutando la aplicación. Si el ordenador está en remoto, necesitará una VPN para acceder a esta carpeta. 
+|![Button](img/docs.png "Button")|Open documentation | Abre la carpeta que contiene los ficheros de la documentación. Esta carpeta suele estar en la raíz del programa y se llama “documents”. 
+|![Button](img/add_version.png "Button")|Add version | Crea un nuevo fichero para la tarea seleccionada. El número de version elegido se calcula como una unidad superior a la mayor versión encontrada en el sistema de ficheros local. Tiene varias opciones:<ul><li>From selected file: Crea una nueva versión en la tarea seleccionada a partir del archivo seleccionado en el explorador de ficheros.<li>From <"extensión"> file: Crea una nueva versión en la tarea seleccionada de la extensión dada por el submenú del botón. (<"extensión"> es equivalente al formato del archivo de versión que se desee) ![submenu add file](img/submenu-button-add-file.png "submenu add file") <li>Cuando no hay ningún archivo, el programa recogerá la última versión de la tarea anterior. En caso de no haber tarea anterior o esta tarea no tuviese ningún archivo, se abrirá la carpeta de “Templates” asociada a su proyecto. 
+|![Button](img/convert.png "Button")|Conversor | Cambia el formato de un archivo multimedia. Necesita tener instalado FFmpeg para que funcione. Actualmente existen dos tipos de conversión: de mp4 a mov y de gif a mov, en caso de necesitar conversiones adicionales se pueden pedir a los desarrolladores.<li>![submenu conversor](img/submenu-conversor.png "submenu conversor")
+|![Button](img/publish.png "Button")|Publish version | Abre la ventana de publicador de versiones. Para más información consulte el epígrafe de “Diálogo de Publicación”. 
+|![Button](img/renamer.png "Button")|Renamer tool | Abre la ventana de renombrado de archivos. Más información bajo el epígrafe “Panel de Renombrado”. 
 
 
 
@@ -187,18 +187,18 @@ Tiene funcionalidades relacionadas con la sincronización de los sistemas de fic
 
 | Icono        | Nombre del botón | Acción  |
 | ------------ |:----------------:|:--------|
-|Up sync file | Sincroniza hacia el servidor los archivos seleccionados en el “Panel de ficheros”. 
-||Up task sync | Sincroniza todos los archivos desde el sistema de ficheros local hacia el sistema de ficheros del servidor de las tareas seleccionadas en el “Panel de Tareas”. 
-||Down task sync | Sincroniza todos los archivos desde el sistema de ficheros del servidor hacia el sistema de ficheros local de las tareas seleccionadas en el “Panel de Tareas”. 
-||Download thumbnail | Descarga miniaturas de las tareas seleccionadas en el “Panel de Tareas”. 
+|![Button](img/sync_file_local_to_server.png "Button")|Up sync file | Sincroniza hacia el servidor los archivos seleccionados en el “Panel de ficheros”. 
+|![Button](img/sync_local_to_server.png "Button")|Up task sync | Sincroniza todos los archivos desde el sistema de ficheros local hacia el sistema de ficheros del servidor de las tareas seleccionadas en el “Panel de Tareas”. 
+|![Button](img/sync_server_to_local.png "Button")|Down task sync | Sincroniza todos los archivos desde el sistema de ficheros del servidor hacia el sistema de ficheros local de las tareas seleccionadas en el “Panel de Tareas”. 
+|![Button](img/thumbs.png "Button")|Download thumbnail | Descarga miniaturas de las tareas seleccionadas en el “Panel de Tareas”. 
 
 ### Barra de herramientas de reproducción 
 Contiene herramientas relacionadas con la visualización y comprobación de ficheros.  
 
 | Icono        | Nombre del botón | Acción  |
 | ------------ |:----------------:|:--------|
-||Open in RV | Requiere tener instalado el programa RV. Permite previsualizar ficheros dentro del programa RV con distintas opciones:<ul><li>Concat video: Abre en RV concatenando los archivos de video seleccionados en el explorador de ficheros. Si no hay ficheros seleccionados, are en RV concatenando el ultimo fichero de video que contenga cada tarea seleccionada en el “Panel de Tareas” siempre que no haya archivos seleccionados en el explorador de ficheros.<li>Concat image: Abre en RV concatenando los archivos de imagen seleccionados en el "Panel de ficheros”, si no hay ficheros seleccionados, abre en RV concatenando el ultimo fichero de imagen que contenga cada tarea seleccionada en el “Panel de Tareas” siempre que no haya archivos seleccionados en el explorador de ficheros.<li>Open concatenator: Abre el “Panel de concatenar”.  
-||Compare in RV | Requiere tener instalado el programa RV. Permite comparar ficheros dentro del programa RV con distintas opciones:<ul><li>Compare video: Abre en RV en modo comparación los archivos de video seleccionados en el “Panel de Ficheros”. Si no hay ficheros seleccionados, abre en RV en modo comparación el ultimo fichero de video que contenga cada tarea seleccionada en el “Panel de Tareas".<li>Compare images: Abre en RV en modo comparación los archivos de imagen seleccionados en el “Panel de Ficheros”. Si no hay ficheros seleccionados, abre en RV en modo comparación el ultimo fichero de video que contenga cada tarea seleccionada en el “Panel de Tareas". 
+|![Button](img/player.png "Button")|Open in RV | Requiere tener instalado el programa RV. Permite previsualizar ficheros dentro del programa RV con distintas opciones:<ul><li>![submenu concat](img/submenu-concat.png "submenu concat")<li>Concat video: Abre en RV concatenando los archivos de video seleccionados en el explorador de ficheros. Si no hay ficheros seleccionados, are en RV concatenando el ultimo fichero de video que contenga cada tarea seleccionada en el “Panel de Tareas” siempre que no haya archivos seleccionados en el explorador de ficheros.<li>Concat image: Abre en RV concatenando los archivos de imagen seleccionados en el "Panel de ficheros”, si no hay ficheros seleccionados, abre en RV concatenando el ultimo fichero de imagen que contenga cada tarea seleccionada en el “Panel de Tareas” siempre que no haya archivos seleccionados en el explorador de ficheros.<li>Open concatenator: Abre el “Panel de concatenar”.  
+|![Button](img/compare.png "Button")|Compare in RV | Requiere tener instalado el programa RV. Permite comparar ficheros dentro del programa RV con distintas opciones:<ul><li>![submenu compare](img/submenu-compare.png "submenu compare")<li>Compare video: Abre en RV en modo comparación los archivos de video seleccionados en el “Panel de Ficheros”. Si no hay ficheros seleccionados, abre en RV en modo comparación el ultimo fichero de video que contenga cada tarea seleccionada en el “Panel de Tareas".<li>Compare images: Abre en RV en modo comparación los archivos de imagen seleccionados en el “Panel de Ficheros”. Si no hay ficheros seleccionados, abre en RV en modo comparación el ultimo fichero de video que contenga cada tarea seleccionada en el “Panel de Tareas". 
 
 
 ### Barra de herramientas de SG 
@@ -206,12 +206,12 @@ Contiene funcionalidades relacionadas con Shotgrid.
 
 | Icono        | Nombre del botón | Acción  |
 | ------------ |:----------------:|:--------|
-||Refresh list of tasks | Actualiza la lista de tareas en el "Panel del Tareas". Tienes que seleccionar qué tipo de entidad quieres previsualizar: Assets, Episodes, Sequences o Shots. 
-||Open task in shotgrid| Abre en el navegador de internet la página de Shotgrid de la tarea seleccionada en el “Panel de Tareas”. 
-||Open Check BDL | Abre el “Panel de BDL”. 
-||Open Check Version Status | Abre el “Panel de Chequeo de estatus”. 
-||Open Download playlist version | Abre el “Panel de descarga de listas de reproducción”. 
-||Download Versions | Descarga al sistema de ficheros local los archivos de las versiones que hay subidas a Shotgrid de las tareas seleccionadas en el “Panel de tareas”. 
+|![Button](img/synchronize.png "Button")|Refresh list of tasks | Actualiza la lista de tareas en el "Panel del Tareas". Tienes que seleccionar qué tipo de entidad quieres previsualizar: Assets, Episodes, Sequences o Shots. <li>![submenu synchronize](img/submenu-synchronize.png "submenu synchronize")
+|![Button](img/sgw.png "Button")|Open task in shotgrid| Abre en el navegador de internet la página de Shotgrid de la tarea seleccionada en el “Panel de Tareas”. 
+|![Button](img/table.png "Button")|Open Check BDL | Abre el “Panel de BDL”. 
+|![Button](img/check.png "Button")|Open Check Version Status | Abre el “Panel de Chequeo de estatus”. 
+|![Button](img/playlist.png "Button")|Open Download playlist version | Abre el “Panel de descarga de listas de reproducción”. 
+|![Button](img/sg_download.png "Button")|Download Versions | Descarga al sistema de ficheros local los archivos de las versiones que hay subidas a Shotgrid de las tareas seleccionadas en el “Panel de tareas”. 
 
 ## Paneles secundarios 
 
