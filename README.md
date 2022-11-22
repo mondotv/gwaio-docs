@@ -204,3 +204,192 @@ Reproductor y visualizador de contenido multimedia. Reproduce el último fichero
 ### Panel de Notas 
 
 Panel que recoge todas las notas que contenga la tarea seleccionada en el “Panel de Tareas”. Haga clic en una nota o imagen para abrirla en el navegador web. Adicionalmente, en la parte superior del panel se muestra la descripción de la tarea, si la tiene. 
+
+### Panel de Renombrado 
+
+Herramienta de renombrado de archivos en lote. Para añadir o quitar archivos del lote que se va a procesar en la herramienta seleccione o deseleccione los archivos que desee en el panel del explorador de ficheros. 
+
+![Panel Renamer](img/panel-renamer.png "Panel Renamer")  
+
+* Prefix: Añade el texto escrito en este campo al comienzo del nombre de todos los archivos seleccionados. 
+
+* Suffix: Añade el texto escrito en este campo al final del nombre de todos los archivos seleccionados. 
+
+* Delete: Elimina del nombre de los archivos seleccionados el texto escrito en el campo. 
+
+* Replace: Reemplaza del nombre de los archivos seleccionados el texto introducido en el campo de la izquierda por el texto introducido en el campo de la derecha. 
+
+* Extension: Reemplaza la extensión de los archivos seleccionados por la que se escribe en el campo. 
+
+### Panel de Publicado 
+
+Herramienta para publicar nuevas versiones en la base de datos del plugin. Adicionalmente trata de sincronizar los archivos locales con los del servidor. 
+
+![Panel Publisher](img/panel-publisher-general-interface.png "Panel Publisher") 
+
+Existen dos formas de ejecutar la herramienta: 
+
+* Para publicar archivos específicos de una tarea siga estos pasos: 
+
+  * Antes de abrir la herramienta, seleccione los ficheros a publicar en el “Panel de ficheros”. 
+
+  * Después abra la herramienta 
+
+* Para publicar archivos de varias tareas siga estos pasos: 
+
+  * Antes de abrir la herramienta, seleccione la tarea a publicar en el “Panel de tareas”. Después abra la herramienta. 
+
+Una vez abierta la herramienta, se mostrarán los ficheros que se van a publicar. Esta herramienta muestra distintos campos de información: 
+
+* En la parte superior se detalla la información de la tarea en la que se va a publicar los ficheros seleccionados. 
+
+* Publish: Checkbox para activar o desactivar la publicación de un fichero. Si la casilla está activa, el color del campo es azul y el archivo se publicará. Si la casilla está desactivada, el color del campo es blanco y el archivo no se publicará. 
+
+* Status Publish: Estado actual de la publicación del archivo.  
+
+  * “Publish succesful” indica que el archivo ya ha sido publicado. Los archivos publicados no se pueden volver a publicar. 
+
+  * “N/A” indica que el archivo no es compatible para ser publicado. 
+
+  * “Not published” indica que el archivo no ha sido publicado anteriormente. 
+
+* Status Sync: Estado actual de la sincronización del archivo.  
+
+  * “Not Synced” indica que el archivo no ha sido sincronizado en el servidor. 
+
+  * “Sync succesful” indica que el archivo ya se encuentra sincronizado en el servidor. 
+
+* Thumbnail: previsualización del archivo a publicar. 
+
+* Path: Nombre del archivo a publicar. 
+
+* En la parte inferior añada la descripción que desee para su versión. 
+
+* Presione el botón “Publish” para publicar. Al finalizar el proceso, la ventana se cerrará automáticamente. 
+
+> NOTA: esta herramienta requiere de acceso a su servidor y de conexión a internet para su correcto funcionamiento. Por favor, asegúrese de que cumple estos requisitos para su uso. 
+
+> NOTA: los archivos publicados no se pueden volver a publicar. 
+
+
+### Panel de Concatenar 
+
+Herramienta para concatenar múltiples archivos multimedia en un único archivo de video. 
+
+![Panel Concatenator](img/panel-concatenator-general-interface.png "Panel Concatenator")
+
+Para añadir los archivos con los que la herramienta va a trabajar, haga clic en uno de los tres métodos que se encuentran en la parte superior de la ventana. 
+
+* Add Files from Folder: Abre una ventana de selección de carpetas. Añade los archivos que contiene las carpetas seleccionadas en la anterior ventana. 
+
+* Add Files from selected Task: Añade todos los archivos que contenga la tarea seleccionada en el panel de Tareas. 
+
+* Add Files from selected Files: Añade todos los archivos seleccionados en el panel de explorador de ficheros. 
+
+El panel central de la herramienta se compone de dos columnas. La primera muestra un checkbox para activar o desactivar su uso en el proceso de concatenado. Si el checkbox está activo en el archivo, la herramienta usara el fichero. En cambio, si el checkbox está desactivado, la herramienta omitirá el archivo durante el proceso de concatenado.  
+
+La segunda columna del panel central de la herramienta muestra el nombre de los ficheros importados. 
+
+En la parte inferior del panel encontramos dos opciones: 
+
+* Duration image: Seleccione los segundos que desee que dure las imágenes estáticas en el video concatenado. 
+
+* Output video: Inserte la ruta y nombre de la salida del video final. Haga clic en la carpeta para navegar por el explorador de archivos y seleccionar la carpeta de salida. 
+
+Por último, presione el botón generar para empezar el proceso de creación del video. 
+
+### Panel de Chequeo de Estatus (Versionator) 
+
+Herramienta destinada a la comprobación y resolución de no coincidencia entre el status de versiones y su tarea en Shotgrid.  
+
+Una vez abierta la herramienta, se realiza el proceso de comprobación de todas las versiones y tareas que compongan el proyecto. Al finalizar el proceso se mostrará en pantalla todas las últimas versiones de cada tarea. 
+
+En la interfaz de la herramienta nos encontramos lo siguiente: 
+
+* La parte superior se compone por los botones de uso: 
+
+  * Refresh versions: Actualiza los datos del panel central. 
+
+  * Update all: Actualiza en Shotgrid todos los status de las tareas que no tengan el mismo status que su última versión publicada. 
+
+  * Update select: Actualiza todos los status de las tareas seleccionadas en el panel central que no tengan el mismo status que su última versión publicada. 
+
+  * Open in SG: Abre en el navegador web la página de la tarea de Shotgrid asociada a la versión seleccionada. 
+
+* En la parte central se muestra el panel que contiene todos los datos de las versiones del proyecto. 
+
+  * Match: “to fix” indica que esa versión es la última de su tarea y no coinciden sus status; “correct” indica que tanto la última versión como su tarea coinciden en status. 
+
+* A la izquierda de la ventana tenemos en menú de filtrado. Realice filtraciones de las versiones en el panel central con los filtros. Cada una de las columnas del panel central tiene un filtro especifico. Los filtros se pueden combinar entre sí. Cuando un filtro este activo su campo de texto es de color azul.  
+
+Chequee “is not” para invertir el filtro, esta acción hace que se invierta su funcionamiento y nos muestre las tareas que no contengan el texto introducido en el filtro. Esta acción cambia el color del campo del filtro a marrón. 
+
+Haga clic en la X del filtro para borrar por completo el texto o bórrelo manualmente con las herramientas comunes de edición de texto. 
+
+
+
+
+
+### Panel de BDL 
+
+Herramienta para la creación por lotes de assets dada una BDL en Shotgrid. 
+
+![Panel DBL](img/panel-bdl-empty.png "Panel BDL empty")
+
+Este panel tiene 3 botones: 
+
+* Load XLSX: te permite cargar un archivo xlsx que siga el patron para el cual ha sido diseñado el plugin de proyecto. Cuando se carga la BDL, aparece una lista con los assets que se van a crear. 
+
+  * ![Panel DBL with xlsx loaded](img/panel-bdl-load-xlsx.png "Panel BDL with xlsx loaded")
+
+  * Las filas en verde indican que ya han sido creados y que existen en la base de datos. 
+  * ![Panel DBL with problem](img/panel-bdl-with-problem.png "Panel BDL with problem")
+  * Las filas en rojo indican que hay algún tipo de problema, haciendo doble clic en la fila, se indica que problema hay: 
+
+ 
+
+  * Para subsanarlo se tiene que eliminar este fallo de la BDL (xlsx) y cargarlo de nuevo. 
+
+* Upload to SG: sube los assets que no estén ni en rojo ni en verde a la base de datos. 
+
+* Upload selected to SG: sube los assets seleccionados y que no estén ni en rojo ni en verde a la base de datos. 
+
+> Nota: Los assets que estén en verde y que se intenten subir actualizarán algunos datos, en el caso de que se aplique y en el case de que algunos datos no sean iguales en el XLSX y en la base de datos. Generalmente esto se aplica a la columna de Description. 
+
+### Tool Download playlist version 
+
+Herramienta para descargar los archivos de las versiones que contenga una Playlist de Shotgrid. 
+
+![Tool Download Playlist Version](img/tool-dowload-playlist-version-general-interface.png "Tool Download Playlist Version")
+
+1. Select Playlist: Seleccione la playlist de la que quiere descargar las versiones. 
+
+2. Output folder: Seleccione la carpeta donde quiera guardar los archivos de la descarga. 
+
+3. Generate edit with download files: Seleccione esta opción si desea hacer un video concatenando todos los archivos descargados. 
+
+4. Haga clic en el botón “Download” para comenzar el proceso 
+
+## Buenas prácticas de uso 
+
+Asegúrese de tener acceso a internet y a su servidor para el correcto funcionamiento del programa. En caso contrario, puede sufrir limitaciones de uso en las utilidades de GwaIO e incluso mal funcionamiento de algunas herramientas. 
+
+### Comenzar una tarea nueva 
+
+Cuando comience una tarea nueva, asegúrese de que dispone en su sistema local de la última versión que exista en el servidor. Para ello, seleccione la tarea correspondiente en el panel de tareas y haga clic en el botón “Down task sync” que se encuentra en la Toolbar de sincronizado.  
+
+* Si al finalizar el proceso de sincronizado obtiene un fichero de versión, seleccione el archivo deseado y vaya a la Toolbar del explorador de ficheros y haga clic en el botón -> “Add version > From selected file”. 
+
+* Si al finalizar el proceso de sincronizado no obtiene ningún fichero de versión, vaya a la Toolbar del explorador de ficheros y haga clic en el botón -> “Add version > From <"extensión"> file” (<"extensión"> es equivalente al formato del archivo de versión que desee). Realizando esta acción se asegurará de generar una versión base con la que empezar a trabajar a partir del último archivo generado en la tarea anterior. En caso de que no exista una versión previa o tarea previa, seleccione la “Template” idónea para su tarea en la ventana de selección que se abre cuando se da este caso. 
+
+### Finalizar una tarea 
+
+Al finalizar una tarea, asegúrese de sincronizar todos los archivos en su servidor y publicar la nueva versión correspondiente en Shotgrid. Para realizar esta acción de una manera idónea, se recomienda seguir estos pasos: 
+
+1. Seleccione la Tarea finalizada en el panel de tareas. 
+
+2. Seleccione todos los archivos nuevos que desee sincronizar en el servidor y publicar en Shotgrid. 
+
+3. Utilice la Tool de publicado para publicar y sincronizar estos ficheros. 
+
+4. Adicionalmente, puede sincronizar todos los ficheros en su servidor que no haya introducido en la Tool de publicado haciendo clic en el botón “Up task sync”, que se encuentra en la Toolbar de sincronizado. Si únicamente desea sincronizar archivos específicos, seleccione los archivos específicos en el explorador de ficheros y haga clic en “Up sync file”, que se encuentra en la Toolbar de sincronizado. 
