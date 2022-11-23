@@ -40,23 +40,25 @@ Autores: Emanuel Aguado Pérez, Juan Moraga Marín
     - [Finalizar una tarea](#finalizar-una-tarea)
 
 ## ¿Qué es GwaIO?
-GwaIO es una herramienta que permite a sus usuarios conectar su estación de trabajo con el servidor compartido de la empresa y con la base de datos que se use para el proyecto. 
+GwaIO es una herramienta que conecta la estación de trabajo de sus usuarios con el servidor compartido de un proyecto y con la base de datos que se use. 
 
-A nivel práctico, GwaIO es una aplicación que permite a los artistas ver una lista de tareas sobre las que tiene que trabajar. Además, permite fácilmente generar ficheros nuevos automatizando la nomenclatura de éstos, la recogida el input de tareas anteriores, la publicación en la base de datos de nuevas versiones etc.
+A nivel práctico, GwaIO es una aplicación que permite a los artistas ver una lista de tareas sobre las que tiene que trabajar. Además, permite fácilmente generar ficheros nuevos automatizando la nomenclatura de éstos, la recogida de los ficheros de entrada resultados de tareas anteriores, la publicación en la base de datos de nuevas versiones etc.  
+A lo largo de esta documentación veremos esto en mayor detalle.
 
 ## Requisitos mínimos del sistema 
-Para ejecutar y utilizar GwaIO, su equipo debe cumplir con las especificaciones técnicas mínimas que se indican a continuación.  
-Windows 10 de 64 bits (versión 21H2) o posterior
+Para ejecutar y utilizar GwaIO, el equipo donde esté instalado debe cumplir con las especificaciones técnicas mínimas que se indican a continuación:  
+* Windows 10 de 64 bits (versión 21H2) o posterior
 
 ## Requisitos adicionales del sistema
-GwaIO integra dentro de sus funcionalidades otros programas, los cuales amplían el abanico de herramientas disponibles, aunque éstos no sean necesarios, es recomendable disponer de ellos: 
+GwaIO integra dentro de sí funcionalidades de otros programas, los cuales amplían el abanico de herramientas disponibles, aunque éstas no sean necesarias, es recomendable disponer de los siguientes programas para obtener sus las funcionalidades adicionales: 
 * [RV](https://www.shotgridsoftware.com/rv/download/)
 * [FFmpeg](https://ffmpeg.org/)
 
-Además, si se quiere utilizar el sistema de sincronización que viene incluido con GwaIO, se deberá tener montado el recurso compartido que se utilice como carpeta raíz del proyecto. En Windows no será necesario ya que se utilizan rutas UNC, pero en Mac y Linux se debe montar el recurso raíz como disco SMB.  
+Además, si se quiere utilizar el sistema de sincronización que viene incluido con GwaIO, se deberá tener montado el recurso compartido que se utilice como carpeta raíz del proyecto. En Windows no será necesario ya que se utilizan rutas UNC, pero en Mac y Linux se debe montar el recurso raíz como disco Samba (SMB).  
 En el caso de que el ordenador esté en remoto, se deberá acceder a la red a través de una VPN.
 
 ## Primeros pasos
+GwaIO se distribuye como una carpeta comprimida dentro de un fichero zip. Dentro de esta carpeta encontramos un archivo ".exe", el cual ejecuta el programa:
 Cuando inicias GwaIO por primera vez, eres presentado con la siguiente interfaz:  
 ![Logged out state](img/logged-out-general-interface.png "Logged out state")   
 Como es natural, no tiene ningún dato cargado todavía, ya que para poder ver datos tienes que identificarte primero en la app.
@@ -68,7 +70,7 @@ Escriba las credenciales de usuario y contraseña para iniciar sesión. Para fin
 
 Una vez logueado, el estatus pasará de “not logged” a “logged”.
 
-![Logged out state](img/logging-dock.png "Logged out state")
+![Panel de Login](img/logging-dock.png "Logged out state")
 
 ## Inicialización del proyecto 
 
