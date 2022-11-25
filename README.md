@@ -42,9 +42,15 @@ Autores: Emanuel Aguado Pérez, Juan Moraga Marín
     - [Finalizar una tarea](#finalizar-una-tarea)
 
 ## ¿Qué es GwaIO?
-GwaIO es una herramienta que conecta la estación de trabajo de sus usuarios con el servidor compartido de un proyecto y con la base de datos que se use. 
 
-A nivel práctico, GwaIO es una aplicación que permite a los artistas ver una lista de tareas sobre las que tiene que trabajar. Además, permite fácilmente generar ficheros nuevos automatizando la nomenclatura de éstos, la recogida de los ficheros de entrada resultados de tareas anteriores, la publicación en la base de datos de nuevas versiones etc.  
+GwaIO es una aplicación de escritorio que agiliza y simplifica la producción de una obra audiovisual mediante el uso de diversas automatizaciones.  
+
+![Gwaio file system](img/diagrama-gwaio.png "Gwaio file system") 
+
+GwaIO conecta la estación de trabajo de sus usuarios con el servidor compartido y con la base de datos que se use para el proyecto, esto por un lado permite al usuario trabajar más rápido, ya que simplifica su flujo de trabajo minimizando el error humano y haciendo más fácil sus tareas cotidianas como, por ejemplo, la creación de ficheros siguiendo una convención de nombres, la subida de su trabajo a un servidor y a una base de datos, la exportación y guardado de ficheros etc.  
+Por otro lado, facilita un control de la producción, ya que se asegura de que todos el material producido esté correctamente guardado según el estándar establecido.  Finalmente, contiene diversas utilidades que, de lo contrario, requerirían software externo, reduciendo costes, como por ejemplo una herramienta para sincronizar ficheros entre un servidor externo y un ordenador local.
+
+A nivel práctico, GwaIO es una aplicación que muestra a los artistas una lista de tareas sobre las que tiene que trabajar. Además, permite fácilmente generar ficheros nuevos automatizando la nomenclatura de éstos, la recogida del material de entrada resultados de tareas anteriores, la publicación en la base de datos de nuevas versiones etc.  
 A lo largo de esta documentación veremos esto en mayor detalle.
 
 ## Requisitos mínimos del sistema 
@@ -64,7 +70,7 @@ GwaIO se distribuye como una carpeta comprimida dentro de un fichero zip. Dentro
 
 ![Gwaio file system](img/gwaio-exe-file-system.png "Gwaio file system") 
 
-Haciendo soble click sobre el mismo se inicia GwaIO.  
+Haciendo soble doble clic sobre el mismo se inicia GwaIO.  
 
 Cuando inicias GwaIO por primera vez, eres presentado con la siguiente interfaz:  
 
