@@ -87,9 +87,11 @@ Actualmente GwaIO actualiza automáticamente dos ficheros que se encuentran en l
   * Último plugin utilizado. 
 
 ### Panel de Login 
-Lo normal es que al principio no tengas una cuenta vinculada a GwaIO. Para ello tienes que loguearte con la cuenta que te proporcione tu empresa.  Primero tenemos que acceder al **"Panel de Login"**. Este panel se encuentra en la región inferior izquierda de la aplicación:  
-Escriba las credenciales de usuario y contraseña para iniciar sesión. Para finalizar presione el botón aceptar.  
-Una vez logueado, el estatus pasará de "not logged" a "logged".
+Lo normal es que al principio no tengas una cuenta vinculada a GwaIO. Para ello tienes que loguearte con la cuenta que te proporcione tu empresa.
+1. Primero tenemos que acceder al **"Panel de Login"**. Este panel se encuentra en la región inferior izquierda de la aplicación.
+2. Segundo Escriba las credenciales de usuario y contraseña para iniciar sesión.
+3. Para finalizar presione el botón aceptar.
+4. Una vez logueado, el estatus pasará de "not logged" a "logged".
 
 ![Panel de Login](img/logging-dock.png "Logged out state")
 
