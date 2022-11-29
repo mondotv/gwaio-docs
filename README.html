@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file://css//style_a.css" type="text/css"><link rel="stylesheet" href="file://css//github_markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="manual-de-usuario-de-gwaio">Manual de usuario de GwaIO</h1>
+<p>Última actualización: 2022/Nov/21<br>
+Autores: Emanuel Aguado Pérez, Juan Moraga Marín</p>
+<h2 id="%C3%ADndice">Índice</h2>
+<ul>
+<li><a href="#manual-de-usuario-de-gwaio">Manual de usuario de GwaIO</a>
+<ul>
+<li><a href="#%C3%ADndice">Índice</a></li>
+<li><a href="#qu%C3%A9-es-gwaio">¿Qué es GwaIO?</a></li>
+<li><a href="#requisitos-m%C3%ADnimos-del-sistema">Requisitos mínimos del sistema </a></li>
+<li><a href="#requisitos-adicionales-del-sistema">Requisitos adicionales del sistema</a></li>
+<li><a href="#primeros-pasos">Primeros pasos</a>
+<ul>
+<li><a href="#ficheros-de-configuraci%C3%B3n">Ficheros de configuración</a></li>
+<li><a href="#panel-de-login">Panel de Login </a></li>
+</ul>
+</li>
+<li><a href="#inicializaci%C3%B3n-del-proyecto">Inicialización del proyecto</a></li>
+<li><a href="#espacio-de-trabajo">Espacio de trabajo</a></li>
+<li><a href="#paneles-principales">Paneles principales</a>
+<ul>
+<li><a href="#panel-de-tareas">Panel de Tareas</a></li>
+<li><a href="#panel-de-ficheros">Panel de Ficheros</a>
+<ul>
+<li><a href="#funciones-adicionales">Funciones adicionales</a></li>
+</ul>
+</li>
+<li><a href="#barra-de-menus">Barra de Menus</a></li>
+<li><a href="#barra-de-estado">Barra de Estado</a></li>
+</ul>
+</li>
+<li><a href="#barras-de-herramientas">Barras de herramientas</a>
+<ul>
+<li><a href="#barra-de-herramientas-del-explorador">Barra de herramientas del explorador</a></li>
+<li><a href="#barra-de-herramientas-de-sincronizaci%C3%B3n">Barra de herramientas de sincronización</a></li>
+<li><a href="#barra-de-herramientas-de-reproducci%C3%B3n">Barra de herramientas de reproducción</a></li>
+<li><a href="#barra-de-herramientas-de-sg">Barra de herramientas de SG</a></li>
+</ul>
+</li>
+<li><a href="#paneles-secundarios">Paneles secundarios</a>
+<ul>
+<li><a href="#panel-de-configuraci%C3%B3n">Panel de Configuración</a></li>
+<li><a href="#panel-de-filtrado">Panel de Filtrado</a></li>
+<li><a href="#panel-de-hilos">Panel de Hilos</a></li>
+<li><a href="#panel-de-sincronizaci%C3%B3n">Panel de Sincronización</a></li>
+<li><a href="#panel-de-reproducci%C3%B3n">Panel de Reproducción</a></li>
+<li><a href="#panel-de-notas">Panel de Notas</a></li>
+<li><a href="#panel-de-renombrado">Panel de Renombrado</a></li>
+<li><a href="#panel-de-publicado">Panel de Publicado</a></li>
+<li><a href="#panel-de-concatenar">Panel de Concatenar</a></li>
+<li><a href="#panel-de-chequeo-de-estatus-versionator">Panel de Chequeo de Estatus (Versionator)</a></li>
+<li><a href="#panel-de-bdl">Panel de BDL</a></li>
+<li><a href="#tool-download-playlist-version">Tool Download playlist version</a></li>
+</ul>
+</li>
+<li><a href="#buenas-pr%C3%A1cticas-de-uso">Buenas prácticas de uso</a>
+<ul>
+<li><a href="#comenzar-una-tarea-nueva">Comenzar una tarea nueva</a></li>
+<li><a href="#finalizar-una-tarea">Finalizar una tarea</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="%C2%BFqu%C3%A9-es-gwaio">¿Qué es GwaIO?</h2>
+<p>GwaIO es una aplicación de escritorio que agiliza y simplifica la producción de una obra audiovisual mediante el uso de diversas automatizaciones.</p>
+<p><img src="img/diagrama-gwaio.png" alt="Gwaio file system" title="Gwaio file system"></p>
+<p>GwaIO conecta la estación de trabajo de sus usuarios con el servidor compartido y con la base de datos que se use para el proyecto, esto por un lado permite al usuario trabajar más rápido, ya que simplifica su flujo de trabajo minimizando el error humano y haciendo más fácil sus tareas cotidianas como, por ejemplo, la creación de ficheros siguiendo una convención de nombres, la subida de su trabajo a un servidor y a una base de datos, la exportación y guardado de ficheros etc.<br>
+Por otro lado, facilita un control de la producción, ya que se asegura de que todos el material producido esté correctamente guardado según el estándar establecido.  Finalmente, contiene diversas utilidades que, de lo contrario, requerirían software externo, reduciendo costes, como por ejemplo una herramienta para sincronizar ficheros entre un servidor externo y un ordenador local.</p>
+<p>A nivel práctico, GwaIO es una aplicación que muestra a los artistas una lista de tareas sobre las que tiene que trabajar. Además, permite fácilmente generar ficheros nuevos automatizando la nomenclatura de éstos, la recogida del material de entrada resultados de tareas anteriores, la publicación en la base de datos de nuevas versiones etc.<br>
+A lo largo de esta documentación veremos esto en mayor detalle.</p>
+<h2 id="requisitos-m%C3%ADnimos-del-sistema">Requisitos mínimos del sistema</h2>
+<p>Para ejecutar y utilizar GwaIO, el equipo donde esté instalado debe cumplir con las especificaciones técnicas mínimas que se indican a continuación:</p>
+<ul>
+<li>Windows 10 de 64 bits (versión 21H2) o posterior</li>
+</ul>
+<h2 id="requisitos-adicionales-del-sistema">Requisitos adicionales del sistema</h2>
+<p>GwaIO integra dentro de sí funcionalidades de otros programas, los cuales amplían el abanico de herramientas disponibles, aunque éstas no sean necesarias, es recomendable disponer de los siguientes programas para obtener sus las funcionalidades adicionales:</p>
+<ul>
+<li><a href="https://www.shotgridsoftware.com/rv/download/">RV</a></li>
+<li><a href="https://ffmpeg.org/">FFmpeg</a></li>
+</ul>
+<p>Además, si se quiere utilizar el sistema de sincronización que viene incluido con GwaIO, se deberá tener montado el recurso compartido que se utilice como carpeta raíz del proyecto. En Windows no será necesario ya que se utilizan rutas UNC, pero en Mac y Linux se debe montar el recurso raíz como disco Samba (SMB).<br>
+En el caso de que el ordenador esté en remoto, se deberá acceder a la red a través de una VPN.</p>
+<h2 id="primeros-pasos">Primeros pasos</h2>
+<p>GwaIO se distribuye como una carpeta comprimida dentro de un fichero zip. Dentro de esta carpeta encontramos un archivo &quot;.exe&quot;, el cual ejecuta el programa:</p>
+<p><img src="img/gwaio-exe-file-system.png" alt="Gwaio file system" title="Gwaio file system"></p>
+<p>Haciendo soble doble clic sobre el mismo se inicia GwaIO.</p>
+<p>Cuando inicias GwaIO por primera vez, eres presentado con la siguiente interfaz:</p>
+<p><img src="img/logged-out-general-interface.png" alt="Logged out state" title="Logged out state"></p>
+<p>Como es natural, no tiene ningún dato cargado todavía, ya que para poder ver datos tienes que identificarte primero en la app.</p>
+<h3 id="ficheros-de-configuraci%C3%B3n">Ficheros de configuración</h3>
+<p>Actualmente GwaIO actualiza automáticamente dos ficheros que se encuentran en la misma carpeta donde se encuentra el ejecutable. Si no existen, genera unos por defecto al ejecutar el programa. Estos dos archivos son:</p>
+<ul>
+<li><strong>./.env</strong>: contiene variables de entorno que GwaIO lee y modifica a través de una interfaz de fácil uso para el usuario. Este fichero puede ser modificado a mano si hace falta.</li>
+<li><strong>./usercfg.json</strong>: contiene datos relativos a la sesion de usuario, como por ejemplo:
+<ul>
+<li>Últimos filtros utilizados en el <strong>&quot;Panel de Filtros&quot;</strong></li>
+<li>Último username y contraseña utilizados en el <strong>Panel de Login</strong>. Nota: la contraseña que se guarda está encriptada, de tal manera que abriendo éste fichero no revela ningún dato confidencial.</li>
+<li>Último plugin utilizado.</li>
+</ul>
+</li>
+</ul>
+<h3 id="panel-de-login">Panel de Login</h3>
+<p>Lo normal es que al principio no tengas una cuenta vinculada a GwaIO. Para ello tienes que loguearte con la cuenta que te proporcione tu empresa.</p>
+<ol>
+<li>Primero tenemos que acceder al <strong>&quot;Panel de Login&quot;</strong>. Este panel se encuentra en la región inferior izquierda de la aplicación.</li>
+<li>Segundo Escriba las credenciales de usuario y contraseña para iniciar sesión.</li>
+<li>Para finalizar presione el botón aceptar.</li>
+<li>Una vez logueado, el estatus pasará de &quot;not logged&quot; a &quot;logged&quot;.</li>
+</ol>
+<p><img src="img/logging-dock.png" alt="Panel de Login" title="Logged out state"></p>
+<p>GwaIO tratará de recordar tus credenciales para sesiones sucesivas.</p>
+<h2 id="inicializaci%C3%B3n-del-proyecto">Inicialización del proyecto</h2>
+<p>Una vez identificado como usuario en la aplicación, ya se puede tener acceso a los proyectos instalados en GwaIO. Para cargar un proyecto, haga clic en el menú desplegable llamado <strong>&quot;Menú de Plugins&quot;</strong>, el cual se encuentra en la <strong>&quot;Barra de Menús&quot;</strong> del programa, en la parte superior de la ventana principal. Haga clic en el plugin del proyecto que desea cargar.</p>
+<p><img src="img/plugins-load-plugin.png" alt="Load plugin" title="Load plugin"></p>
+<p>Cuando se inicializa un proyecto, el programa carga el plugin vinculado a este proyecto y a continuación carga automáticamente tanto las tareas del proyecto en el <strong>&quot;Panel de Tareas&quot;</strong>, como las barras de herramientas asociadas al mismo.</p>
+<h2 id="espacio-de-trabajo">Espacio de trabajo</h2>
+<p>La interfaz de usuario se divide en dos paneles principales, el <strong>&quot;Panel de Tareas&quot;</strong> y el <strong>&quot;Panel de Ficheros&quot;</strong>. Tiene además una <strong>&quot;Barra de Menús&quot;</strong> y una <strong>&quot;Barra de Estatus&quot;</strong>.</p>
+<p><img src="img/workspace-general-interface.png" alt="Workspace" title="Workspace"></p>
+<p>Adicionalmente tiene otros paneles y barras de herramientas secundarias con funcionalidades adicionales que se pueden solapar entre sí, desacoplar de la ventana principal y reacoplar de nuevo, dando la posibilidad de customizar el espacio de trabajo. A continuación, vamos a verlas una a una.</p>
+<h2 id="paneles-principales">Paneles principales</h2>
+<h3 id="panel-de-tareas">Panel de Tareas</h3>
+<p>El <strong>&quot;Panel de Tareas&quot;</strong> muestra la información relativa a las tareas creadas para cada proyecto.<br>
+Esta información se muestra en forma de tabla, donde cada tarea es una fila y cada columna son los datos con los que se pueden filtrar las tareas con los filtros que hay en el <strong>&quot;Panel de Filtros&quot;</strong>.<br>
+Las teclas de control y shift funcionan igual que en el explorador de windows y permite seleccionar varias tareas.</p>
+<p><img src="img/panel-task-general-interface.png" alt="Panel task" title="Panel task"></p>
+<h3 id="panel-de-ficheros">Panel de Ficheros</h3>
+<p>El <strong>&quot;Panel de Ficheros&quot;</strong> muestra los ficheros existentes en el sistema de ficheros local para la tarea que haya seleccionada en el <strong>&quot;Panel de Tareas&quot;</strong>. Si no hay ninguna tarea seleccionada, este menú  muestra el sistema de ficheros de la última task seleccionada (o vacío en el caso de que no se hubiera seleccionado ninguna tarea aún en la sesión activa). A continuación, se muestran dos imágenes:</p>
+<ul>
+<li>La primera imagen muestra el <strong>&quot;Panel de Ficheros&quot;</strong> con ninguna tarea seleccionada</li>
+</ul>
+<p><img src="img/panel-task-item-unselected.png" alt="Unselected panel task" title="Unselected panel task"></p>
+<ul>
+<li>La segunda imagen muestra el <strong>&quot;Panel de Ficheros&quot;</strong> con una tarea seleccionada. Si se seleccionan varias tareas, el <strong>&quot;Panel de Ficheros&quot;</strong> muestra la última tarea seleccionada.</li>
+</ul>
+<p><img src="img/panel-task-item-selected.png" alt="Workspace" title="Workspace"></p>
+<p>Adicionalmente el <strong>&quot;Panel de Ficheros&quot;</strong> tiene una barra de navegación y un botón para subir a la carpeta continente de la carpeta que se muestra actualmente.</p>
+<p><img src="img/panel-files-path-editor.png" alt="Panel task with selected task" title="Panel task with selected task"></p>
+<p>Si se pone una dirección válida y se pulsa la tecla <strong>&quot;Enter&quot;</strong>, el <strong>&quot;Panel de Ficheros&quot;</strong> se actualiza a la ruta escrita.</p>
+<h4 id="funciones-adicionales">Funciones adicionales</h4>
+<p>Este panel tiene funcionalidades similares a la de cualquier explorador de archivos:</p>
+<ol>
+<li>Haga doble click para abrir un archivo</li>
+<li>Presione Ctrl+Click para seleccionar varios archivos</li>
+<li>Presione Alt+Click para seleccionar el conjunto de archivos comprendido entre ambos clics.</li>
+<li>Arrastre un archivo dentro del panel para copiarlo dentro de la carpeta seleccionada en el explorador de ficheros</li>
+<li>Seleccione y arrastre un archivo del explorador de ficheros a una ventana externa al programa para moverlo/utilizarlo.</li>
+<li>Los archivos mal nombrados se muestran con el texto de color rojo.</li>
+</ol>
+<h3 id="barra-de-menus">Barra de Menus</h3>
+<p>La <strong>&quot;Barra de Menus&quot;</strong> se sitúa en la parte superior de la aplicación y tiene la siguiente disposición:</p>
+<p><img src="img/toolbar-menu.png" alt="Toolbar menu" title="Toolbar menu"></p>
+<ul>
+<li><strong>File</strong>: contiene tres acciones:
+<ul>
+<li><strong>Update pipeline</strong>: cuando haya alguna actualización de GwaIO se deberá pulsar este botón para obtenerla.</li>
+<li><strong>Remove empty folders</strong>: elimina directorios vacíos que existan dentro del proyecto.</li>
+<li><strong>Run tests</strong>: esta opción es para los desarrolladores y no tiene ningún uso práctico para el usuario.</li>
+</ul>
+</li>
+<li><strong>View</strong>: activa o desactiva la visibilidad de paneles</li>
+<li><strong>Plugins</strong>: inicializa el plugin seleccionado. Solo se puede inicializar un plugin a la vez.</li>
+<li><strong>&lt;&quot;Nombre del Proyecto&quot;&gt;</strong>: activa o desactiva las &quot;Barras de herramientas&quot; de cada proyecto.</li>
+<li><strong>Help</strong>: muestra el dialogo de ayuda, hasta la fecha sólo tiene un &quot;About&quot;.</li>
+</ul>
+<h3 id="barra-de-estado">Barra de Estado</h3>
+<p>Muestra diversos mensajes dependiendo de cuál sea la última acción hecha por el artista.
+<img src="img/status-bar-detail.png" alt="Status bar detail" title="Status bar detail"></p>
+<h2 id="barras-de-herramientas">Barras de herramientas</h2>
+<p>Las barras de herramientas, también conocidas como <strong>&quot;toolbars&quot;</strong> se pueden ocultar, mostrar, desacoplar de la interfaz o mover de posición al gusto del usuario. Cada una de estas barras de herramientas contienen bonotes con funcionalidades que se describen a continuación.</p>
+<p><img src="img/multiples-toolbars.png" alt="Multiples toolbars" title="Multiples toolbars"></p>
+<p>Algunas barras de herramientas (Toolbars).</p>
+<p>Para mostrar u ocultar las barras de herramientas, haga clic en <strong>&quot;Toolbars&quot;</strong> y/o <strong>&lt;&quot;Nombre del proyecto&quot;&gt;</strong>, que se encuentra en la barra de menus, en la parte superior de la ventana, y seleccione o deseleccione las barras de herramientas que desee modificar.</p>
+<h3 id="barra-de-herramientas-del-explorador">Barra de herramientas del explorador</h3>
+<table>
+<thead>
+<tr>
+<th>Icono</th>
+<th style="text-align:center">Nombre del botón</th>
+<th style="text-align:left">Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="img/explorer_local.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Open local folder</td>
+<td style="text-align:left">Abre la carpeta local de la tarea seleccionada. Esto es, la carpeta de la tarea dentro del sistema de ficheros local del ordenador que está ejecutando la aplicación.</td>
+</tr>
+<tr>
+<td><img src="img/explorer_server.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Open server folder</td>
+<td style="text-align:left">Abre la carpeta del servidor de la tarea seleccionada. Esto es, la carpeta de la tarea dentro del sistema de ficheros del servidor que está ejecutando la aplicación. Si el ordenador está en remoto, necesitará una VPN para acceder a esta carpeta.</td>
+</tr>
+<tr>
+<td><img src="img/docs.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Open documentation</td>
+<td style="text-align:left">Abre la carpeta que contiene los ficheros de la documentación. Esta carpeta suele estar en la raíz del programa y se llama &quot;documents&quot;.</td>
+</tr>
+<tr>
+<td><img src="img/add_version.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Add version</td>
+<td style="text-align:left">Crea un nuevo fichero para la tarea seleccionada. El número de version elegido se calcula como una unidad superior a la mayor versión encontrada en el sistema de ficheros local. Tiene varias opciones:  <ul><li><img src="img/submenu-button-add-file.png" alt="submenu add file" title="submenu add file"><li><strong>From selected file:</strong> Crea una nueva versión en la tarea seleccionada a partir del archivo seleccionado en el explorador de ficheros.<li><strong>From &lt;&quot;extensión&quot;&gt; file:</strong> Crea una nueva versión en la tarea seleccionada de la extensión dada por el submenú del botón. (&lt;&quot;extensión&quot;&gt; es equivalente al formato del archivo de versión que se desee)  <li>Cuando no hay ningún archivo, el programa recogerá la última versión de la tarea anterior. En caso de no haber tarea anterior o esta tarea no tuviese ningún archivo, se abrirá la carpeta de &quot;Templates&quot; asociada a su proyecto.</td>
+</tr>
+<tr>
+<td><img src="img/convert.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Conversor</td>
+<td style="text-align:left">Cambia el formato de un archivo multimedia. Necesita tener instalado FFmpeg para que funcione. Actualmente existen dos tipos de conversión: de mp4 a mov y de gif a mov, en caso de necesitar conversiones adicionales se pueden pedir a los desarrolladores.<li><img src="img/submenu-conversor.png" alt="submenu conversor" title="submenu conversor"></td>
+</tr>
+<tr>
+<td><img src="img/publish.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Publish version</td>
+<td style="text-align:left">Abre la ventana de publicador de versiones. Para más información consulte el epígrafe de <strong>&quot;Diálogo de Publicación&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/renamer.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Renamer tool</td>
+<td style="text-align:left">Abre la ventana de renombrado de archivos. Más información bajo el epígrafe <strong>&quot;Panel de Renombrado&quot;</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p>Tiene funcionalidades relacionas con el manejo de ficheros. Además, tiene herramientas relacionadas con la publicación de versiones dentro de una base de datos.</p>
+<h3 id="barra-de-herramientas-de-sincronizaci%C3%B3n">Barra de herramientas de sincronización</h3>
+<p>Tiene funcionalidades relacionadas con la sincronización de los sistemas de ficheros local y del servidor.</p>
+<table>
+<thead>
+<tr>
+<th>Icono</th>
+<th style="text-align:center">Nombre del botón</th>
+<th style="text-align:left">Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="img/sync_file_local_to_server.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Up sync file</td>
+<td style="text-align:left">Sincroniza hacia el servidor los archivos seleccionados en el <strong>&quot;Panel de ficheros&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/sync_local_to_server.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Up task sync</td>
+<td style="text-align:left">Sincroniza todos los archivos desde el sistema de ficheros local hacia el sistema de ficheros del servidor de las tareas seleccionadas en el <strong>&quot;Panel de Tareas&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/sync_server_to_local.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Down task sync</td>
+<td style="text-align:left">Sincroniza todos los archivos desde el sistema de ficheros del servidor hacia el sistema de ficheros local de las tareas seleccionadas en el <strong>&quot;Panel de Tareas&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/thumbs.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Download thumbnail</td>
+<td style="text-align:left">Descarga miniaturas de las tareas seleccionadas en el <strong>&quot;Panel de Tareas&quot;</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="barra-de-herramientas-de-reproducci%C3%B3n">Barra de herramientas de reproducción</h3>
+<p>Contiene herramientas relacionadas con la visualización y comprobación de ficheros.</p>
+<table>
+<thead>
+<tr>
+<th>Icono</th>
+<th style="text-align:center">Nombre del botón</th>
+<th style="text-align:left">Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="img/player.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Open in RV</td>
+<td style="text-align:left">Requiere tener instalado el programa RV. Permite previsualizar ficheros dentro del programa RV con distintas opciones:<ul><li><img src="img/submenu-concat.png" alt="submenu concat" title="submenu concat"><li><strong>Concat video</strong>: abre en RV concatenando los archivos de video seleccionados en el explorador de ficheros. Si no hay ficheros seleccionados, are en RV concatenando el ultimo fichero de video que contenga cada tarea seleccionada en el <strong>&quot;Panel de Tareas&quot;</strong> siempre que no haya archivos seleccionados en el explorador de ficheros.<li><strong>Concat image:</strong> Abre en RV concatenando los archivos de imagen seleccionados en el <strong>&quot;Panel de ficheros&quot;</strong>, si no hay ficheros seleccionados, abre en RV concatenando el ultimo fichero de imagen que contenga cada tarea seleccionada en el <strong>&quot;Panel de Tareas&quot;</strong> siempre que no haya archivos seleccionados en el explorador de ficheros.<li><strong>Open concatenator:</strong> Abre el <strong>&quot;Panel de concatenar&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/compare.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Compare in RV</td>
+<td style="text-align:left">Requiere tener instalado el programa RV. Permite comparar ficheros dentro del programa RV con distintas opciones:<ul><li><img src="img/submenu-compare.png" alt="submenu compare" title="submenu compare"><li><strong>Compare video:</strong> Abre en RV en modo comparación los archivos de video seleccionados en el <strong>&quot;Panel de Ficheros&quot;</strong>. Si no hay ficheros seleccionados, abre en RV en modo comparación el ultimo fichero de video que contenga cada tarea seleccionada en el <strong>&quot;Panel de Tareas&quot;</strong>.<li><strong>Compare images:</strong> Abre en RV en modo comparación los archivos de imagen seleccionados en el <strong>&quot;Panel de Ficheros&quot;</strong>. Si no hay ficheros seleccionados, abre en RV en modo comparación el ultimo fichero de video que contenga cada tarea seleccionada en el <strong>&quot;Panel de Tareas&quot;</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="barra-de-herramientas-de-sg">Barra de herramientas de SG</h3>
+<p>Contiene funcionalidades relacionadas con Shotgrid.</p>
+<table>
+<thead>
+<tr>
+<th>Icono</th>
+<th style="text-align:center">Nombre del botón</th>
+<th style="text-align:left">Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="img/synchronize.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Refresh list of tasks</td>
+<td style="text-align:left">Actualiza la lista de tareas en el <strong>&quot;Panel del Tareas&quot;</strong>. Tienes que seleccionar qué tipo de entidad quieres previsualizar: Assets, Episodes, Sequences o Shots. <li><img src="img/submenu-synchronize.png" alt="submenu synchronize" title="submenu synchronize"></td>
+</tr>
+<tr>
+<td><img src="img/sgw.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Open task in shotgrid</td>
+<td style="text-align:left">Abre en el navegador de internet la página de Shotgrid de la tarea seleccionada en el <strong>&quot;Panel de Tareas&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/table.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Open Check BDL</td>
+<td style="text-align:left">Abre el <strong>&quot;Panel de BDL&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/check.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Open Check Version Status</td>
+<td style="text-align:left">Abre el <strong>&quot;Panel de Chequeo de estatus&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/playlist.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Open Download playlist version</td>
+<td style="text-align:left">Abre el <strong>&quot;Panel de descarga de listas de reproducción&quot;</strong>.</td>
+</tr>
+<tr>
+<td><img src="img/sg_download.png" alt="Button" title="Button"></td>
+<td style="text-align:center">Download Versions</td>
+<td style="text-align:left">Descarga al sistema de ficheros local los archivos de las versiones que hay subidas a Shotgrid de las tareas seleccionadas en el <strong>&quot;Panel de tareas&quot;</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="paneles-secundarios">Paneles secundarios</h2>
+<p>Los paneles secundarios muestran información adicional de las tareas y contienen herramientas de utilidad para facilitar el trabajo.</p>
+<p><img src="img/multiples-dock-panels.png" alt="Dock panels" title="Dock panels"><br>
+<em>Algunos paneles secundarios agrupados.</em></p>
+<p>Estos paneles y barras de herramientas se pueden ocultar, mostrar, agrupar o desacoplar de la interfaz o mover de posición al gusto del usuario:</p>
+<ul>
+<li>
+<p>Si desea convertir un panel en flotante, haga clic en la barra de título y arrastre el panel a otra ubicación. Otro método para desacoplar un panel de forma automática es hacer doble clic en el título del panel.</p>
+</li>
+<li>
+<p>Si desea acoplar un panel flotante, haga clic en la barra de título del panel y arrastre hacia otro panel hacia el borde de la ventana. Otro método para acoplar un panel de forma automática es hacer doble clic sobre la barra de título del panel.</p>
+</li>
+<li>
+<p>Para mostrar/ocultar los paneles, haga clic en View, que se encuentra en la barra de menú en la parte superior de la ventana, y seleccione o deseleccione los paneles que desee modificar.</p>
+</li>
+</ul>
+<h3 id="panel-de-configuraci%C3%B3n">Panel de Configuración</h3>
+<p>En este panel puede ver la información de la configuración del programa. Generalmente no se debería editar directamente, ya que se edita automáticamente con el uso del propio programa.</p>
+<h3 id="panel-de-filtrado">Panel de Filtrado</h3>
+<p>Permite al usuario filtrar las tareas visibles en el <strong>&quot;Panel de Tareas&quot;</strong>. Hay un filtro por cada columna que aparece en este panel. Los filtros se pueden combinar entre sí. Cuando un filtro este activo su campo de texto es de color azul.</p>
+<p><img src="img/panel-filter-general-interface.png" alt="Panel Filter" title="Panel Filter"></p>
+<p>Active la casilla <strong>&quot;is not&quot;</strong> para invertir el filtro. Esta acción hace que se invierta su funcionamiento y nos muestre las tareas que no contengan el texto introducido en el filtro. Esta acción cambia el color del campo del filtro a marrón.</p>
+<p><img src="img/panel-filter-is-not-actived.png" alt="Panel filter 'is not' actived" title="Panel filter 'is not' actived"><br>
+<img src="img/panel-filter-actived.png" alt="Panel filter actived" title="Panel filter actived"></p>
+<p>Haga clic en el icono de la <strong>&quot;x&quot;</strong> situado a la derecha del filtro para borrar por completo el texto. Alternativamente también puede el usuario borrarlo manualmente con las herramientas comunes de edición de texto.</p>
+<p>Los filtros tienen un sistema para autocompletar. Puede añadir varios tags de filtro separándo dichos tags con el signo <strong>&quot;;&quot;</strong>.</p>
+<p><img src="img/panel-filter-multiples-tags.png" alt="Panel filter multiples tags" title="Panel filter multiples tags"></p>
+<p>Si el usuario activa la casilla <strong>&quot;is not&quot;</strong> y deja vacío el filtro, el &quot;Panel de Tareas&quot; no mostrará ninguna tarea.</p>
+<h3 id="panel-de-hilos">Panel de Hilos</h3>
+<p>Panel técnico donde se muestra el listado de todos los hilos de proceso abiertos, finalizados y a la espera en el programa. No es relevante para el usuario.</p>
+<p><img src="img/panel-threads-general-interface.png" alt="Panel Threads" title="Panel Threads"></p>
+<h3 id="panel-de-sincronizaci%C3%B3n">Panel de Sincronización</h3>
+<p>Panel técnico donde se muestra el log de los archivos y carpetas sincronizadas. Además, este panel contiene los mismos botones de sincronizado de la <strong>&quot;Barra de herramientas de sincronización&quot;</strong>.</p>
+<h3 id="panel-de-reproducci%C3%B3n">Panel de Reproducción</h3>
+<p>Reproductor y visualizador de contenido multimedia. Reproduce el último fichero seleccionado en el &quot;Panel de Ficheros&quot;. También reproduce la miniatura (si la hay en el sistema de ficheros local) de la última tarea seleccionada.</p>
+<h3 id="panel-de-notas">Panel de Notas</h3>
+<p>Panel que recoge todas las notas que contenga la tarea seleccionada en el <strong>&quot;Panel de Tareas&quot;</strong>. Haga clic en una nota o imagen para abrirla en el navegador web. Adicionalmente, en la parte superior del panel se muestra la descripción de la tarea, si la tiene.</p>
+<h3 id="panel-de-renombrado">Panel de Renombrado</h3>
+<p>Herramienta de renombrado de archivos en lote. Para añadir o quitar archivos del lote que se va a procesar en la herramienta seleccione o deseleccione los archivos que desee en el panel del explorador de ficheros.</p>
+<p><img src="img/panel-renamer.png" alt="Panel Renamer" title="Panel Renamer"></p>
+<ul>
+<li>
+<p>Prefix: añade el texto escrito en este campo al comienzo del nombre de todos los archivos seleccionados.</p>
+</li>
+<li>
+<p>Suffix: añade el texto escrito en este campo al final del nombre de todos los archivos seleccionados.</p>
+</li>
+<li>
+<p>Delete: elimina del nombre de los archivos seleccionados el texto escrito en el campo.</p>
+</li>
+<li>
+<p>Replace: reemplaza del nombre de los archivos seleccionados el texto introducido en el campo de la izquierda por el texto introducido en el campo de la derecha.</p>
+</li>
+<li>
+<p>Extension: reemplaza la extensión de los archivos seleccionados por la que se escribe en el campo.</p>
+</li>
+</ul>
+<h3 id="panel-de-publicado">Panel de Publicado</h3>
+<p>Herramienta para publicar nuevas versiones en la base de datos del plugin. Adicionalmente trata de sincronizar los archivos locales con los del servidor.</p>
+<p><img src="img/panel-publisher-general-interface.png" alt="Panel Publisher" title="Panel Publisher"></p>
+<p>Existen dos formas de ejecutar la herramienta:</p>
+<ul>
+<li>
+<p>Para publicar archivos específicos de una tarea siga estos pasos:</p>
+<ul>
+<li>
+<p>Antes de abrir la herramienta, seleccione los ficheros a publicar en el <strong>&quot;Panel de ficheros&quot;</strong>.</p>
+</li>
+<li>
+<p>Después abra la herramienta</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Para publicar archivos de varias tareas siga estos pasos:</p>
+<ul>
+<li>Antes de abrir la herramienta, seleccione la tarea a publicar en el <strong>&quot;Panel de tareas&quot;</strong>. Después abra la herramienta.</li>
+</ul>
+</li>
+</ul>
+<p>Una vez abierta la herramienta, se mostrarán los ficheros que se van a publicar. Esta herramienta muestra distintos campos de información:</p>
+<ul>
+<li>
+<p>En la parte superior se detalla la información de la tarea en la que se va a publicar los ficheros seleccionados.</p>
+</li>
+<li>
+<p>Publish: checkbox para activar o desactivar la publicación de un fichero. Si la casilla está activa, el color del campo es azul y el archivo se publicará. Si la casilla está desactivada, el color del campo es blanco y el archivo no se publicará.</p>
+</li>
+<li>
+<p>Status Publish: estado actual de la publicación del archivo.</p>
+<ul>
+<li>
+<p>&quot;Publish succesful&quot; indica que el archivo ya ha sido publicado. <strong>Los archivos publicados no se pueden volver a publicar.</strong></p>
+</li>
+<li>
+<p>&quot;N/A&quot; indica que el archivo no es compatible para ser publicado.</p>
+</li>
+<li>
+<p>&quot;Not published&quot; indica que el archivo no ha sido publicado anteriormente.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Status Sync: estado actual de la sincronización del archivo.</p>
+<ul>
+<li>
+<p>&quot;Not Synced&quot; indica que el archivo no ha sido sincronizado en el servidor.</p>
+</li>
+<li>
+<p>&quot;Sync succesful&quot; indica que el archivo ya se encuentra sincronizado en el servidor.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Thumbnail: previsualización del archivo a publicar.</p>
+</li>
+<li>
+<p>Path: nombre del archivo a publicar.</p>
+</li>
+<li>
+<p>En la parte inferior añada la descripción que desee para su versión.</p>
+</li>
+<li>
+<p>Presione el botón &quot;Publish&quot; para publicar. Al finalizar el proceso, la ventana se cerrará automáticamente.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>NOTA: esta herramienta requiere de acceso a su servidor y de conexión a internet para su correcto funcionamiento. Por favor, asegúrese de que cumple estos requisitos para su uso.</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>NOTA: los archivos publicados no se pueden volver a publicar.</strong></p>
+</blockquote>
+<h3 id="panel-de-concatenar">Panel de Concatenar</h3>
+<p>Herramienta para concatenar múltiples archivos multimedia en un único archivo de video.</p>
+<p><img src="img/panel-concatenator-general-interface.png" alt="Panel Concatenator" title="Panel Concatenator"></p>
+<p>Para añadir los archivos con los que la herramienta va a trabajar, haga clic en uno de los tres métodos que se encuentran en la parte superior de la ventana.</p>
+<ul>
+<li>
+<p>Add Files from Folder: abre una ventana de selección de carpetas. Añade los archivos que contiene las carpetas seleccionadas en la anterior ventana.</p>
+</li>
+<li>
+<p>Add Files from selected Task: añade todos los archivos que contenga la tarea seleccionada en el panel de Tareas.</p>
+</li>
+<li>
+<p>Add Files from selected Files: añade todos los archivos seleccionados en el panel de explorador de ficheros.</p>
+</li>
+</ul>
+<p>El panel central de la herramienta se compone de dos columnas. La primera muestra un checkbox para activar o desactivar su uso en el proceso de concatenado. Si el checkbox está activo en el archivo, la herramienta usara el fichero. En cambio, si el checkbox está desactivado, la herramienta omitirá el archivo durante el proceso de concatenado.</p>
+<p>La segunda columna del panel central de la herramienta muestra el nombre de los ficheros importados.</p>
+<p>En la parte inferior del panel encontramos dos opciones:</p>
+<ul>
+<li>
+<p>Duration image: seleccione los segundos que desee que dure las imágenes estáticas en el video concatenado.</p>
+</li>
+<li>
+<p>Output video: inserte la ruta y nombre de la salida del video final. Haga clic en la carpeta para navegar por el explorador de archivos y seleccionar la carpeta de salida.</p>
+</li>
+</ul>
+<p>Por último, presione el botón generar para empezar el proceso de creación del video.</p>
+<h3 id="panel-de-chequeo-de-estatus-versionator">Panel de Chequeo de Estatus (Versionator)</h3>
+<p>Herramienta destinada a la comprobación y resolución de no coincidencia entre el status de versiones y su tarea en Shotgrid.</p>
+<p>Una vez abierta la herramienta, se realiza el proceso de comprobación de todas las versiones y tareas que compongan el proyecto. Al finalizar el proceso se mostrará en pantalla todas las últimas versiones de cada tarea.</p>
+<p>En la interfaz de la herramienta nos encontramos lo siguiente:</p>
+<ul>
+<li>
+<p>La parte superior se compone por los botones de uso:</p>
+<ul>
+<li>
+<p>Refresh versions: actualiza los datos del panel central.</p>
+</li>
+<li>
+<p>Update all: actualiza en Shotgrid todos los status de las tareas que no tengan el mismo status que su última versión publicada.</p>
+</li>
+<li>
+<p>Update select: actualiza todos los status de las tareas seleccionadas en el panel central que no tengan el mismo status que su última versión publicada.</p>
+</li>
+<li>
+<p>Open in SG: abre en el navegador web la página de la tarea de Shotgrid asociada a la versión seleccionada.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>En la parte central se muestra el panel que contiene todos los datos de las versiones del proyecto.</p>
+<ul>
+<li>Match: &quot;to fix&quot; indica que esa versión es la última de su tarea y no coinciden sus status; &quot;correct&quot; indica que tanto la última versión como su tarea coinciden en status.</li>
+</ul>
+</li>
+<li>
+<p>A la izquierda de la ventana tenemos en menú de filtrado. Realice filtraciones de las versiones en el panel central con los filtros. Cada una de las columnas del panel central tiene un filtro especifico. Los filtros se pueden combinar entre sí. Cuando un filtro este activo su campo de texto es de color azul.</p>
+</li>
+</ul>
+<p>Chequee &quot;is not&quot; para invertir el filtro, esta acción hace que se invierta su funcionamiento y nos muestre las tareas que no contengan el texto introducido en el filtro. Esta acción cambia el color del campo del filtro a marrón.</p>
+<p>Haga clic en la X del filtro para borrar por completo el texto o bórrelo manualmente con las herramientas comunes de edición de texto.</p>
+<h3 id="panel-de-bdl">Panel de BDL</h3>
+<p>Herramienta para la creación por lotes de assets dada una BDL en Shotgrid.</p>
+<p><img src="img/panel-bdl-empty.png" alt="Panel DBL" title="Panel BDL empty"></p>
+<p>Este panel tiene 3 botones:</p>
+<ul>
+<li>
+<p><strong>Load XLSX:</strong> te permite cargar un archivo xlsx que siga el patrón para el cual ha sido diseñado el plugin de proyecto. Cuando se carga la BDL, aparece una lista con los assets que se van a crear.</p>
+<ul>
+<li>
+<p><img src="img/panel-bdl-load-xlsx.png" alt="Panel DBL with xlsx loaded" title="Panel BDL with xlsx loaded"></p>
+</li>
+<li>
+<p>Las filas en verde indican que ya han sido creados y que existen en la base de datos.</p>
+</li>
+<li>
+<p><img src="img/panel-bdl-with-problem.png" alt="Panel DBL with problem" title="Panel BDL with problem"></p>
+</li>
+<li>
+<p>Las filas en rojo indican que hay algún tipo de problema, haciendo doble clic en la fila, se indica que problema hay:</p>
+</li>
+<li>
+<p>Para subsanarlo se tiene que eliminar este fallo de la BDL (xlsx) y cargarlo de nuevo.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Upload to SG:</strong> sube los assets que no estén ni en rojo ni en verde a la base de datos.</p>
+</li>
+<li>
+<p><strong>Upload selected to SG:</strong> sube los assets seleccionados y que no estén ni en rojo ni en verde a la base de datos.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Nota: Los assets que estén en verde y que se intenten subir actualizarán algunos datos, en el caso de que se aplique y en el case de que algunos datos no sean iguales en el XLSX y en la base de datos. Generalmente esto se aplica a la columna de Description.</strong></p>
+</blockquote>
+<h3 id="tool-download-playlist-version">Tool Download playlist version</h3>
+<p>Herramienta para descargar los archivos de las versiones que contenga una Playlist de Shotgrid.</p>
+<p><img src="img/tool-dowload-playlist-version-general-interface.png" alt="Tool Download Playlist Version" title="Tool Download Playlist Version"></p>
+<ol>
+<li>
+<p>Select Playlist: seleccione la playlist de la que quiere descargar las versiones.</p>
+</li>
+<li>
+<p>Output folder: seleccione la carpeta donde quiera guardar los archivos de la descarga.</p>
+</li>
+<li>
+<p>Generate edit with download files: seleccione esta opción si desea hacer un video concatenando todos los archivos descargados.</p>
+</li>
+<li>
+<p>Haga clic en el botón <strong>&quot;Download&quot;</strong> para comenzar el proceso</p>
+</li>
+</ol>
+<h2 id="buenas-pr%C3%A1cticas-de-uso">Buenas prácticas de uso</h2>
+<p>Asegúrese de tener acceso a internet y a su servidor para el correcto funcionamiento del programa. En caso contrario, puede sufrir limitaciones de uso en las utilidades de GwaIO e incluso mal funcionamiento de algunas herramientas.</p>
+<h3 id="comenzar-una-tarea-nueva">Comenzar una tarea nueva</h3>
+<p>Cuando comience una tarea nueva, asegúrese de que dispone en su sistema local de la última versión que exista en el servidor. Para ello, seleccione la tarea correspondiente en el <strong>&quot;Panel de Tareas&quot;</strong> y haga clic en el botón <strong>&quot;Down task sync&quot;</strong> que se encuentra en la Toolbar de sincronizado.</p>
+<ul>
+<li>
+<p>Si al finalizar el proceso de sincronizado obtiene un fichero de versión, seleccione el archivo deseado y vaya a <strong>&quot;Barra de herramientas del explorador&quot;</strong> y haga clic en el botón -&gt; <strong>&quot;Add version &gt; From selected file&quot;</strong>.</p>
+</li>
+<li>
+<p>Si al finalizar el proceso de sincronizado no obtiene ningún fichero de versión, vaya a la <strong>&quot;Barra de herramientas del explorador&quot;</strong> y haga clic en el botón -&gt; <strong>&quot;Add version &gt; From &lt;&quot;extensión&quot;&gt; file&quot;</strong> <em>(&lt;&quot;extensión&quot;&gt; es equivalente al formato del archivo de versión que desee)</em>. Realizando esta acción se asegurará de generar una versión base con la que empezar a trabajar a partir del último archivo generado en la tarea anterior. En caso de que no exista una versión previa o tarea previa, seleccione la &quot;Template&quot; idónea para su tarea en la ventana de selección que se abre cuando se da este caso.</p>
+</li>
+</ul>
+<h3 id="finalizar-una-tarea">Finalizar una tarea</h3>
+<p>Al finalizar una tarea, asegúrese de sincronizar todos los archivos en su servidor y publicar la nueva versión correspondiente en Shotgrid. Para realizar esta acción de una manera idónea, se recomienda seguir estos pasos:</p>
+<ol>
+<li>
+<p>Seleccione la tarea finalizada en el <strong>&quot;Panel de Tareas&quot;</strong>.</p>
+</li>
+<li>
+<p>Seleccione todos los archivos nuevos que desee sincronizar en el servidor y publicar en Shotgrid.</p>
+</li>
+<li>
+<p>Utilice la <strong>&quot;Panel de Publicado&quot;</strong> para publicar y sincronizar estos ficheros.</p>
+</li>
+<li>
+<p>Adicionalmente, puede sincronizar todos los ficheros en su servidor que no haya sincronizado en el <strong>&quot;Panel de Publicado&quot;</strong> haciendo clic en el botón <strong>&quot;Up task sync&quot;</strong>, que se encuentra en la <strong>&quot;Barra de sincronizado&quot;</strong>. Si únicamente desea sincronizar archivos específicos, seleccione los archivos específicos en el <strong>&quot;Panel de ficheros&quot;</strong> de y haga clic en <strong>&quot;Up sync file&quot;</strong>, que se encuentra en la <strong>&quot;Barra de sincronizado&quot;</strong>.</p>
+</li>
+</ol>
+
+</body>
+</html>
