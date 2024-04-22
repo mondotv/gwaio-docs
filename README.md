@@ -22,7 +22,7 @@ Autores: Emanuel Aguado Pérez, Juan Moraga Marín
   - [Barras de herramientas](#barras-de-herramientas)
     - [Barra de herramientas del explorador](#barra-de-herramientas-del-explorador)
     - [Barra de herramientas de sincronización](#barra-de-herramientas-de-sincronización)
-    - [Barra de herramientas de reproducción](#barra-de-herramientas-de-reproducción)
+    - [Barra de herramientas de reproducción (Obsoleto)](#barra-de-herramientas-de-reproducción-obsoleto)
     - [Barra de herramientas de SG](#barra-de-herramientas-de-sg)
   - [Paneles secundarios](#paneles-secundarios)
     - [Panel de Configuración](#panel-de-configuración)
@@ -30,13 +30,21 @@ Autores: Emanuel Aguado Pérez, Juan Moraga Marín
     - [Panel de Hilos](#panel-de-hilos)
     - [Panel de Sincronización](#panel-de-sincronización)
     - [Panel de Reproducción](#panel-de-reproducción)
+    - [Panel de syncronizado](#panel-de-syncronizado)
     - [Panel de Notas](#panel-de-notas)
+    - [Panel de Versiones](#panel-de-versiones)
     - [Panel de Renombrado](#panel-de-renombrado)
     - [Panel de Publicado](#panel-de-publicado)
-    - [Panel de Concatenar](#panel-de-concatenar)
-    - [Panel de Chequeo de Estatus (Versionator)](#panel-de-chequeo-de-estatus-versionator)
+    - [Panel de Concatenar (Obsoleto)](#panel-de-concatenar-obsoleto)
     - [Panel de BDL](#panel-de-bdl)
+    - [Panel de EDL](#panel-de-edl)
+    - [Panel de Timelog](#panel-de-timelog)
     - [Tool Download playlist version](#tool-download-playlist-version)
+    - [Tool Download Package](#tool-download-package)
+    - [Tool Job Manager (Experimental)](#tool-job-manager-experimental)
+    - [Tool Broker (Experimental)](#tool-broker-experimental)
+    - [Toolbar de Jobs](#toolbar-de-jobs)
+    - [Tool Launch Job](#tool-launch-job)
   - [Buenas prácticas de uso](#buenas-prácticas-de-uso)
     - [Comenzar una tarea nueva](#comenzar-una-tarea-nueva)
     - [Finalizar una tarea](#finalizar-una-tarea)
@@ -66,11 +74,12 @@ Además, si se quiere utilizar el sistema de sincronización que viene incluido 
 En el caso de que el ordenador esté en remoto, se deberá acceder a la red a través de una VPN.
 
 ## Primeros pasos
+GwaIO se distribuye con un instalador. Haciendo doble click sobre el instalador se abrirá la interfaz de instalación del programa:
 GwaIO se distribuye como una carpeta comprimida dentro de un fichero zip. Dentro de esta carpeta encontramos un archivo ".exe", el cual ejecuta el programa:
 
-![Gwaio file system](img/gwaio-exe-file-system.png "Gwaio file system") 
+![Gwaio installer](img/gwaio-installer.png "Gwaio installer") 
 
-Haciendo soble doble clic sobre el mismo se inicia GwaIO.  
+Deberá seguir los pasos del instalador para disponer del programa. Una vez finalizada la instalación, se podrá abrir GwaIO desde la carpeta de instalación, o desde el acceso directo creado en el escritorio (Si se habilitó la opción en la instalación). 
 
 Cuando inicias GwaIO por primera vez, eres presentado con la siguiente interfaz:  
 
@@ -79,8 +88,8 @@ Cuando inicias GwaIO por primera vez, eres presentado con la siguiente interfaz:
 Como es natural, no tiene ningún dato cargado todavía, ya que para poder ver datos tienes que identificarte primero en la app.
 
 ### Ficheros de configuración
-Actualmente GwaIO actualiza automáticamente dos ficheros que se encuentran en la misma carpeta donde se encuentra el ejecutable. Si no existen, genera unos por defecto al ejecutar el programa. Estos dos archivos son:
-* **./.env**: contiene variables de entorno que GwaIO lee y modifica a través de una interfaz de fácil uso para el usuario. Este fichero puede ser modificado a mano si hace falta.
+Actualmente GwaIO actualiza automáticamente dos ficheros que se encuentran en la ruta "%appdata%\GwaIO". Si no existen, se generaran automáticamente. Estos dos archivos son:
+* **./gwaio.env**: contiene variables de entorno que GwaIO lee y modifica a través de una interfaz de fácil uso para el usuario. Este fichero puede ser modificado a mano si hace falta.
 * **./usercfg.json**: contiene datos relativos a la sesion de usuario, como por ejemplo:
   * Últimos filtros utilizados en el **"Panel de Filtros"**
   * Último username y contraseña utilizados en el **Panel de Login**. Nota: la contraseña que se guarda está encriptada, de tal manera que abriendo éste fichero no revela ningún dato confidencial.
@@ -90,7 +99,7 @@ Actualmente GwaIO actualiza automáticamente dos ficheros que se encuentran en l
 Lo normal es que al principio no tengas una cuenta vinculada a GwaIO. Para ello tienes que loguearte con la cuenta que te proporcione tu empresa.
 1. Primero tenemos que acceder al **"Panel de Login"**. Este panel se encuentra en la región inferior izquierda de la aplicación.
 2. Segundo Escriba las credenciales de usuario y contraseña para iniciar sesión.
-3. Para finalizar presione el botón aceptar.
+3. Para finalizar presione el botón "Log in".
 4. Una vez logueado, el estatus pasará de "not logged" a "logged".
 
 ![Panel de Login](img/logging-dock.png "Logged out state")
@@ -122,6 +131,10 @@ Las teclas de control y shift funcionan igual que en el explorador de windows y 
 
 ![Panel task](img/panel-task-general-interface.png "Panel task")
 
+Además, tenemos la funcionalidad de poder usar un buscador rápido utilizando el atajo de teclado Ctrl+F sobre el panel de tareas.
+
+![Panel task find](img/panel-task-find.png "Panel task find")
+
 ### Panel de Ficheros 
 
 El **"Panel de Ficheros"** muestra los ficheros existentes en el sistema de ficheros local para la tarea que haya seleccionada en el **"Panel de Tareas"**. Si no hay ninguna tarea seleccionada, este menú  muestra el sistema de ficheros de la última task seleccionada (o vacío en el caso de que no se hubiera seleccionado ninguna tarea aún en la sesión activa). A continuación, se muestran dos imágenes:
@@ -133,7 +146,10 @@ El **"Panel de Ficheros"** muestra los ficheros existentes en el sistema de fich
 
 ![Workspace](img/panel-task-item-selected.png "Workspace")
 
-Adicionalmente el **"Panel de Ficheros"** tiene una barra de navegación y un botón para subir a la carpeta continente de la carpeta que se muestra actualmente. 
+Adicionalmente el **"Panel de Ficheros"** tiene una barra de navegación y tres botones:
+ * Subir: Este boton nos lleva a la carpeta padre del path actual.
+ * Refrescar: Fuerza un refrescado de los datos que hay en el panel.
+ * Renombrar: Herramienta para renombrar un archivo seleccionado.
 
 ![Panel task with selected task](img/panel-files-path-editor.png "Panel task with selected task")
 
@@ -157,12 +173,13 @@ La **"Barra de Menus"** se sitúa en la parte superior de la aplicación y tiene
 ![Toolbar menu](img/toolbar-menu.png "Toolbar menu")
 
 * **File**: contiene tres acciones: 
-  * **Update pipeline**: cuando haya alguna actualización de GwaIO se deberá pulsar este botón para obtenerla. 
+  * **Update GwaIO**: cuando haya alguna actualización de GwaIO se deberá pulsar este botón para obtenerla. 
   * **Remove empty folders**: elimina directorios vacíos que existan dentro del proyecto. 
-  * **Run tests**: esta opción es para los desarrolladores y no tiene ningún uso práctico para el usuario. 
-* **View**: activa o desactiva la visibilidad de paneles 
+  * **Manage enviroments**: abre una ventana para editar las variables de entorno de los proyectos. 
+* **View**: activa o desactiva la visibilidad de paneles. 
 * **Plugins**: inicializa el plugin seleccionado. Solo se puede inicializar un plugin a la vez. 
 * **<"Nombre del Proyecto">**: activa o desactiva las "Barras de herramientas" de cada proyecto. 
+* **Apps**: abre aplicaciones de trabajo desde GwaIO. 
 * **Help**: muestra el dialogo de ayuda, hasta la fecha sólo tiene un "About". 
 
 ### Barra de Estado 
@@ -185,15 +202,12 @@ Para mostrar u ocultar las barras de herramientas, haga clic en **"Toolbars"** y
 | ------------ |:----------------:|:--------|
 |![Button](img/explorer_local.png "Button")|Open local folder | Abre la carpeta local de la tarea seleccionada. Esto es, la carpeta de la tarea dentro del sistema de ficheros local del ordenador que está ejecutando la aplicación. 
 |![Button](img/explorer_server.png "Button")|Open server folder | Abre la carpeta del servidor de la tarea seleccionada. Esto es, la carpeta de la tarea dentro del sistema de ficheros del servidor que está ejecutando la aplicación. Si el ordenador está en remoto, necesitará una VPN para acceder a esta carpeta. 
-|![Button](img/docs.png "Button")|Open documentation | Abre la carpeta que contiene los ficheros de la documentación. Esta carpeta suele estar en la raíz del programa y se llama "documents". 
 |![Button](img/add_version.png "Button")|Add version | Crea un nuevo fichero para la tarea seleccionada. El número de version elegido se calcula como una unidad superior a la mayor versión encontrada en el sistema de ficheros local. Tiene varias opciones:  <ul><li>![submenu add file](img/submenu-button-add-file.png "submenu add file")<li>**From selected file:** Crea una nueva versión en la tarea seleccionada a partir del archivo seleccionado en el explorador de ficheros.<li>**From <"extensión"> file:** Crea una nueva versión en la tarea seleccionada de la extensión dada por el submenú del botón. (<"extensión"> es equivalente al formato del archivo de versión que se desee)  <li>Cuando no hay ningún archivo, el programa recogerá la última versión de la tarea anterior. En caso de no haber tarea anterior o esta tarea no tuviese ningún archivo, se abrirá la carpeta de "Templates" asociada a su proyecto. 
-|![Button](img/convert.png "Button")|Conversor | Cambia el formato de un archivo multimedia. Necesita tener instalado FFmpeg para que funcione. Actualmente existen dos tipos de conversión: de mp4 a mov y de gif a mov, en caso de necesitar conversiones adicionales se pueden pedir a los desarrolladores.<li>![submenu conversor](img/submenu-conversor.png "submenu conversor")
 |![Button](img/publish.png "Button")|Publish version | Abre la ventana de publicador de versiones. Para más información consulte el epígrafe de **"Diálogo de Publicación"**. 
-|![Button](img/renamer.png "Button")|Renamer tool | Abre la ventana de renombrado de archivos. Más información bajo el epígrafe **"Panel de Renombrado"**. 
 
 
 
-Tiene funcionalidades relacionas con el manejo de ficheros. Además, tiene herramientas relacionadas con la publicación de versiones dentro de una base de datos. 
+Tiene funcionalidades relacionadas con el manejo de ficheros. Además, tiene herramientas relacionadas con la publicación de versiones dentro de una base de datos. 
 
 
 ### Barra de herramientas de sincronización 
@@ -201,13 +215,13 @@ Tiene funcionalidades relacionadas con la sincronización de los sistemas de fic
 
 | Icono        | Nombre del botón | Acción  |
 | ------------ |:----------------:|:--------|
-|![Button](img/sync_file_local_to_server.png "Button")|Up sync file | Sincroniza hacia el servidor los archivos seleccionados en el **"Panel de ficheros"**. 
-|![Button](img/sync_local_to_server.png "Button")|Up task sync | Sincroniza todos los archivos desde el sistema de ficheros local hacia el sistema de ficheros del servidor de las tareas seleccionadas en el **"Panel de Tareas"**. 
-|![Button](img/sync_server_to_local.png "Button")|Down task sync | Sincroniza todos los archivos desde el sistema de ficheros del servidor hacia el sistema de ficheros local de las tareas seleccionadas en el **"Panel de Tareas"**. 
-|![Button](img/thumbs.png "Button")|Download thumbnail | Descarga miniaturas de las tareas seleccionadas en el **"Panel de Tareas"**. 
+|![Button](img/sync_local_to_server.png "Button")|Up task sync | Sincroniza todos los archivos desde el sistema de ficheros local hacia el sistema de ficheros del servidor de las tareas seleccionadas en el **"Panel de Tareas"** o sincroniza unicamente los ficheros seleccionados en el **Panel de ficheros**. 
+|![Button](img/sync_server_to_local.png "Button")|Down task sync | Sincroniza todos los archivos desde el sistema de ficheros del servidor hacia el sistema de ficheros local de las tareas seleccionadas en el **"Panel de Tareas"** o sincroniza unicamente los ficheros seleccionados en el **Panel de ficheros**. 
+|![Button](img/sync_server_to_local_mayas.png "Button")| Maya sync | Sincroniza las dependencias del archivo maya seleccionado del servidor hacia el sistema de ficheros local.
 
-### Barra de herramientas de reproducción 
-Contiene herramientas relacionadas con la visualización y comprobación de ficheros.  
+
+### Barra de herramientas de reproducción (Obsoleto)
+Contiene herramientas relacionadas con la visualización y comprobación de ficheros. 
 
 | Icono        | Nombre del botón | Acción  |
 | ------------ |:----------------:|:--------|
@@ -223,13 +237,16 @@ Contiene funcionalidades relacionadas con Shotgrid.
 |![Button](img/synchronize.png "Button")|Refresh list of tasks | Actualiza la lista de tareas en el **"Panel del Tareas"**. Tienes que seleccionar qué tipo de entidad quieres previsualizar: Assets, Episodes, Sequences o Shots. <li>![submenu synchronize](img/submenu-synchronize.png "submenu synchronize")
 |![Button](img/sgw.png "Button")|Open task in shotgrid| Abre en el navegador de internet la página de Shotgrid de la tarea seleccionada en el **"Panel de Tareas"**. 
 |![Button](img/table.png "Button")|Open Check BDL | Abre el **"Panel de BDL"**. 
-|![Button](img/check.png "Button")|Open Check Version Status | Abre el **"Panel de Chequeo de estatus"**. 
 |![Button](img/playlist.png "Button")|Open Download playlist version | Abre el **"Panel de descarga de listas de reproducción"**. 
-|![Button](img/sg_download.png "Button")|Download Versions | Descarga al sistema de ficheros local los archivos de las versiones que hay subidas a Shotgrid de las tareas seleccionadas en el **"Panel de tareas"**. 
+|![Button](img/sg_upload.png "Button")|Upload Package | Sube a la base de datos de Shotgrid los archivos seleccionados en el **"Panel de ficheros"**. 
+|![Button](img/sg_download.png "Button")|Download Package | Descarga al sistema de ficheros local el ultimo package de los archivos que hay subido a Shotgrid de la tarea seleccionada en el **"Panel de tareas"**. Como alternativa, podemos abrir la **"Tool Download Package"**. 
+|![Button](img/edl.png "Button")|Open EDL | Abre el **"Panel de EDL"**. 
+|![Button](img/timelog.png "Button")|Open Timelog | Abre el **"Panel de Timelog"**. 
+|![Button](img/open_rv.png "Button")|Open RV | Abre RV concatenando los shots previos y posteriores a la task seleccionada. Para usar este botón, seleccione una task de animación y apriete el boton **"Open RV"**, seleccione el paddin con la cantidad de videos anteriores y posteriores. 
 
 ## Paneles secundarios 
 
-Los paneles secundarios muestran información adicional de las tareas y contienen herramientas de utilidad para facilitar el trabajo. 
+Los paneles secundarios tambien llamados **"docks"** muestran información adicional de las tareas y contienen herramientas de utilidad para facilitar el trabajo. 
 
 ![Dock panels](img/multiples-dock-panels.png "Dock panels")  
 *Algunos paneles secundarios agrupados.* 
@@ -281,11 +298,24 @@ Panel técnico donde se muestra el log de los archivos y carpetas sincronizadas.
 
 Reproductor y visualizador de contenido multimedia. Reproduce el último fichero seleccionado en el "Panel de Ficheros". También reproduce la miniatura (si la hay en el sistema de ficheros local) de la última tarea seleccionada. 
 
+### Panel de syncronizado 
+
+En este panel podemos configurar una serie de filtros para que el sincronizador excluya ciertos ficheros o fuerce a sincronizar algun fichero en concreto, además se puede limitar la cantidad de archivos a sincronizar.
+ * Include: Sincroniza unicamente los archivos que contiene el texto del recuadro.
+ * Exclude: Excluye del sincronizado los archivos que contiene el texto del recuadro.
+ * Limit: Limita el numero de archivos sincronizados. Este limite se aplica por extensión de los archivos. Es decir, si existe para sincronizar 4 archivos .ma y 4 archivos .mov y ponemos un limite de 2, se sincronizarán los 2 últimos .ma y los dos últimos .mov.
+
+![Panel Syncer](img/panel-syncer.png "Panel Syncer") 
+
 ### Panel de Notas 
 
 Panel que recoge todas las notas que contenga la tarea seleccionada en el **"Panel de Tareas"**. Haga clic en una nota o imagen para abrirla en el navegador web. Adicionalmente, en la parte superior del panel se muestra la descripción de la tarea, si la tiene. 
 
-### Panel de Renombrado 
+### Panel de Versiones
+
+Panel que recoge todas las versiones que contenga la tarea seleccionada en el **"Panel de Tareas"**.
+
+### Panel de Renombrado
 
 Herramienta de renombrado de archivos en lote. Para añadir o quitar archivos del lote que se va a procesar en la herramienta seleccione o deseleccione los archivos que desee en el panel del explorador de ficheros. 
 
@@ -303,7 +333,7 @@ Herramienta de renombrado de archivos en lote. Para añadir o quitar archivos de
 
 ### Panel de Publicado 
 
-Herramienta para publicar nuevas versiones en la base de datos del plugin. Adicionalmente trata de sincronizar los archivos locales con los del servidor. 
+Herramienta para publicar nuevas versiones en la base de datos del plugin. Adicionalmente trata de sincronizar los archivos locales con los del servidor, y si el plugin tiene habilitada la opción, da la posibilidad de empaquetar automaticamente los archivos seleccionados y subirlos a la base de datos. 
 
 ![Panel Publisher](img/panel-publisher-general-interface.png "Panel Publisher") 
 
@@ -347,12 +377,20 @@ Una vez abierta la herramienta, se mostrarán los ficheros que se van a publicar
 
 * Presione el botón "Publish" para publicar. Al finalizar el proceso, la ventana se cerrará automáticamente. 
 
+![Panel Publisher](img/panel-publisher-missing-info.png "Panel Publisher") 
+
+Para que la publicación se pueda realizar, deberá rellenar toda la información necesaria, en caso de que falte información, la interfaz mostrará un borde de color rojo sobre el campo que requiera información.
+
+![Panel Publisher](img/panel-publisher-correct-publish.png "Panel Publisher") 
+
+Una vez finalizado el proceso de publicación, aparecerá una ventana que nos confirma que el proceso se ha realizado correctamente.
+
 > **NOTA: esta herramienta requiere de acceso a su servidor y de conexión a internet para su correcto funcionamiento. Por favor, asegúrese de que cumple estos requisitos para su uso.**
 
-> **NOTA: los archivos publicados no se pueden volver a publicar.**
+> **NOTA: los archivos publicados en la base de datos no se pueden volver a publicar.**
 
 
-### Panel de Concatenar 
+### Panel de Concatenar (Obsoleto)
 
 Herramienta para concatenar múltiples archivos multimedia en un único archivo de video. 
 
@@ -377,38 +415,6 @@ En la parte inferior del panel encontramos dos opciones:
 * Output video: inserte la ruta y nombre de la salida del video final. Haga clic en la carpeta para navegar por el explorador de archivos y seleccionar la carpeta de salida. 
 
 Por último, presione el botón generar para empezar el proceso de creación del video. 
-
-### Panel de Chequeo de Estatus (Versionator) 
-
-Herramienta destinada a la comprobación y resolución de no coincidencia entre el status de versiones y su tarea en Shotgrid.  
-
-Una vez abierta la herramienta, se realiza el proceso de comprobación de todas las versiones y tareas que compongan el proyecto. Al finalizar el proceso se mostrará en pantalla todas las últimas versiones de cada tarea. 
-
-En la interfaz de la herramienta nos encontramos lo siguiente: 
-
-* La parte superior se compone por los botones de uso: 
-
-  * Refresh versions: actualiza los datos del panel central. 
-
-  * Update all: actualiza en Shotgrid todos los status de las tareas que no tengan el mismo status que su última versión publicada. 
-
-  * Update select: actualiza todos los status de las tareas seleccionadas en el panel central que no tengan el mismo status que su última versión publicada. 
-
-  * Open in SG: abre en el navegador web la página de la tarea de Shotgrid asociada a la versión seleccionada. 
-
-* En la parte central se muestra el panel que contiene todos los datos de las versiones del proyecto. 
-
-  * Match: "to fix" indica que esa versión es la última de su tarea y no coinciden sus status; "correct" indica que tanto la última versión como su tarea coinciden en status. 
-
-* A la izquierda de la ventana tenemos en menú de filtrado. Realice filtraciones de las versiones en el panel central con los filtros. Cada una de las columnas del panel central tiene un filtro especifico. Los filtros se pueden combinar entre sí. Cuando un filtro este activo su campo de texto es de color azul.  
-
-Chequee "is not" para invertir el filtro, esta acción hace que se invierta su funcionamiento y nos muestre las tareas que no contengan el texto introducido en el filtro. Esta acción cambia el color del campo del filtro a marrón. 
-
-Haga clic en la X del filtro para borrar por completo el texto o bórrelo manualmente con las herramientas comunes de edición de texto. 
-
-
-
-
 
 ### Panel de BDL 
 
@@ -436,6 +442,35 @@ Este panel tiene 3 botones:
 
 > **Nota: Los assets que estén en verde y que se intenten subir actualizarán algunos datos, en el caso de que se aplique y en el case de que algunos datos no sean iguales en el XLSX y en la base de datos. Generalmente esto se aplica a la columna de Description.** 
 
+### Panel de EDL 
+
+Herramienta para la creación por lotes de shots en Shotgrid dado un fichero EDL. En esta ventana nos encontraremos 5 botones.
+
+![Panel EDL](img/panel-edl-empty.png "Panel EDL empty")
+
+* **LOAD EDL/XML:** Este botón permite añadir los datos necesarios para poder trabajar con la herramienta:
+  * 1.- Seleccione el archivo EDL.
+  * ![Panel EDL](img/panel-edl-select-edl.png "Panel EDL empty")
+  * 2.- Seleccione el archivo de video correspondiente a la EDL.
+  * ![Panel EDL](img/panel-edl-select-mov.png "Panel EDL empty")
+  * 3.- Seleccione el episode/sequence con la que quiere trabajar.
+  * ![Panel EDL](img/panel-edl-select-episode.png "Panel EDL empty")
+  * 4.- Seleccione la tarea en la que quiere trabajar.
+  * ![Panel EDL](img/panel-edl-select-task.png "Panel EDL empty")
+  * 5.- Una vez realizados todos los pasos tendremos la información en la ventana:
+  * ![Panel EDL](img/panel-edl-with-data.png "Panel EDL empty")
+* **Split video:** Con los datos cargados, podemos utilizar esta botón para recortar los shots del video dado. A través de los datos de la EDL GwaIO recortará los shots seleccionados en la ventana y los guardará en formato mov y wav.
+* **Copy files to server:** Copia los archivos generados con el **"Split video"** al servidor.
+* **Upload to SG:** Genera los shots en Shotgrid si no existen y sube los videos recortados en la tarea seleccionada.
+
+
+### Panel de Timelog 
+
+Este panel sirve para marcar el timelog de la task seleccionada en Shotgrid.
+
+![Panel Timelog](img/timelog-default.png "Panel Timelog")
+
+
 ### Tool Download playlist version 
 
 Herramienta para descargar los archivos de las versiones que contenga una Playlist de Shotgrid. 
@@ -449,6 +484,45 @@ Herramienta para descargar los archivos de las versiones que contenga una Playli
 3. Generate edit with download files: seleccione esta opción si desea hacer un video concatenando todos los archivos descargados. 
 
 4. Haga clic en el botón **"Download"** para comenzar el proceso 
+
+### Tool Download Package
+
+Ventana que nos muestra el listado de packages publicados en shotgrid. Esta ventana nos permite filtrar por nombre en caso de que deseemos un package en especifico. Esta herramienta nos descargará y ordenara en su ubicación correspondiente todos los archivos contenidos en el Package.
+
+### Tool Job Manager (Experimental)
+
+Herramienta en fase de desarrollo con la que gestionar los jobs que se envian miendiante la **"Toolbar de Jobs"**. En este panel encontraremos la información de cada uno de los jobs que tenemos en la farm nativa de GwaIO
+
+Para acceder a esta herramienta haga clic en menu de la **"Barra de Menus"** View > Job Viewer
+
+### Tool Broker (Experimental)
+
+La herramienta de Broker simplemente se usa para activar el pc como un nodo de trabajo en la farm de GwaIO. Una vez activa la tool en el pc, comenzará a realizar las tareas que se encuentren en la **"Tool Job Manager"**.
+
+Para acceder a esta herramienta haga clic en menu de la **"Barra de Menus"** View > Brocker Dock
+
+### Toolbar de Jobs
+
+Esta toolbar contiene botones con los que abrir el lanzador de jobs a la farm interna de GwaIO. Los componentes de esta toolbar dependerán del proyecto y de las necesidades que tenga.
+
+### Tool Launch Job
+
+Esta herramienta se abre mediante los botones que contiene la **"Toolbar de Jobs"**. Haga clic en el launcher deseado y a continuación se mostrara esta ventana:
+
+![Launcher job](img/launch-job-default.png "Launcher job")
+
+La herramienta de Launch Job se compone de una serie de opciones para poder configurar nuestro job:
+
+ * Seleccione el tipo de job que desea lanzar a farm
+ * Si es necesario, seleccione el archivo de input que requiere el job. Alternativamente, puede seleccionar el archivo en el **"Panel de explorardor"** previamente a abrir la herramienta.
+ * Si lo desea, puede guardar un preset con la configuración del job para posteriormente poder seleccionar el preset deseado y no tener que configurar los valores a mano.
+ * Configure las opciones con los parametros deseados.
+   * Puede usar tags para automatizar el valor deseado en funcion a los valores de la tarea/proyecto. Por ejemplo, puede utilizar el tag de <cut_duration> para seleccionar el valor de duración que contiene la tarea.
+   * Para ver el listado de tags haga clic en el botón de la derecha de cada opción.
+   * Para previsualizar el resultado del tag mantenga el ratón sobre el boton de tags
+   * Para ver la descripción de cualquier parametro mantenga el ratón sobre el cuadro de texto del valor del parametro.
+ * Por último, haga clic en "Create Job" para lanzar el job a la farm.
+
 
 ## Buenas prácticas de uso 
 
