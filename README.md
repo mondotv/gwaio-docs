@@ -1,5 +1,5 @@
 # Manual de usuario de GwaIO
-Última actualización: 2022/Nov/21  
+Última actualización: 2024/04/23  
 Autores: Emanuel Aguado Pérez, Juan Moraga Marín
 
 ## Índice
@@ -13,6 +13,7 @@ Autores: Emanuel Aguado Pérez, Juan Moraga Marín
     - [Panel de Login ](#panel-de-login)
   - [Inicialización del proyecto](#inicialización-del-proyecto)
   - [Espacio de trabajo](#espacio-de-trabajo)
+  - [Actualización](#actualización)
   - [Paneles principales](#paneles-principales)
     - [Panel de Tareas](#panel-de-tareas)
     - [Panel de Ficheros](#panel-de-ficheros)
@@ -120,6 +121,14 @@ La interfaz de usuario se divide en dos paneles principales, el **"Panel de Tare
 ![Workspace](img/workspace-general-interface.png "Workspace")
 
 Adicionalmente tiene otros paneles y barras de herramientas secundarias con funcionalidades adicionales que se pueden solapar entre sí, desacoplar de la ventana principal y reacoplar de nuevo, dando la posibilidad de customizar el espacio de trabajo. A continuación, vamos a verlas una a una. 
+
+## Actualización
+
+En caso de que exista una actualización del programa, nos aparecerá un banner en la intefaz que lo indicará.
+
+![update](img/banner-update.png "update")
+
+Haga clic en el número de versión para comenzar la actualización de GwaIO. No obstante, las actualizaciones se pueden revisar tambien a través de la **"Barra de Menús"**. Para ello, haga clic en **File > Update GwaIO**
 
 ## Paneles principales 
 
