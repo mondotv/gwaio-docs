@@ -1,0 +1,54 @@
+ignore:
+  - "examples/"
+  - "tests/"
+  - "static/"
+
+nav:
+  - Inicio: index.md
+  - User Guide:
+      - Introducción: user/setup.md
+      - Interfaz: 
+        - Paneles: user/interface/panels.md
+        - Toolbars: user/interface/toolbars.md
+      - Workflow: user/workflow.md
+  - Admin Guide:
+      - Introducción: admin/home.md
+      - Setup: admin/setup.md
+      - Configuración: 
+        - Studio: admin/config/studio.md
+        - Projects: admin/config/projects.md
+        - Users: admin/config/users.md
+      - Base de datos:
+        - Flow Production Tracking: admin/db/fpt.md
+  - Dev Guide:
+    - Introducción: dev/home.md
+    - Setup: dev/setup.md
+    - Guia de uso: dev/examples.md
+    - Launcher: 
+      - Introducción: dev/launcher/readme.md
+      - Examples: dev/launcher/examples.md
+    - Publisher: 
+      - Introducción: dev/publisher/readme.md
+      - Examples: dev/publisher/examples.md
+    - Plugins: 
+      - Introducción: dev/task_schema/readme.md
+      - Examples: dev/task_schema/examples.md
+    - API: 
+      - GwaIO:
+        # - Launcher:
+        #   - dev/launcher/*
+        - Task Schema:
+          - dev/task_schema/*
+        - Publisher:
+          - dev/publisher/*
+        # - Job Manager:
+        #   - dev/jobmanager/*.md
+        #   - dev/jobmanager/*
+        # - Utilities:
+        #   - dev/utilities/*.md
+        #   - dev/utilities/*
+        
+
+
+
+

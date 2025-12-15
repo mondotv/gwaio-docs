@@ -1,0 +1,3 @@
+# `GDockArea`
+
+::: launcher.app.GDockArea

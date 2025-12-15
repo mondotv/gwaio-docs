@@ -1,0 +1,3 @@
+# `ErrorProcess`
+
+::: publisher.core.ErrorProcess

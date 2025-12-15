@@ -1,0 +1,3 @@
+# `GToolbarArea`
+
+::: launcher.app.GToolbarArea

@@ -1,0 +1,3 @@
+# `ManagerWidget`
+
+::: publisher.widget.ManagerWidget

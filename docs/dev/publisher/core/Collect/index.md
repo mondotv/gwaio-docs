@@ -1,0 +1,3 @@
+# `Collect`
+
+::: publisher.core.Collect

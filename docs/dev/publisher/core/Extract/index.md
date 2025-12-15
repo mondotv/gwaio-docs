@@ -1,0 +1,3 @@
+# `Extract`
+
+::: publisher.core.Extract

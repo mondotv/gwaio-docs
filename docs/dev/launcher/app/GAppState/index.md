@@ -1,0 +1,3 @@
+# `GAppState`
+
+::: launcher.app.GAppState

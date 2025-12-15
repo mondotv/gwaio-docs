@@ -1,0 +1,3 @@
+# `ColorFormatter`
+
+::: launcher.logger.ColorFormatter

@@ -1,0 +1,3 @@
+# `StatusProcess`
+
+::: publisher.core.StatusProcess

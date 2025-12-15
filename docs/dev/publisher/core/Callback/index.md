@@ -1,0 +1,3 @@
+# `Callback`
+
+::: publisher.core.Callback

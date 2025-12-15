@@ -1,0 +1,3 @@
+# `Check`
+
+::: publisher.core.Check
