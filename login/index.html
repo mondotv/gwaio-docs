@@ -96,10 +96,10 @@
         justify-content: center;
       }
 
-      .md-content {
+      /* .md-content {
         max-width: 480px;
         padding: 2rem;
-      }
+      } */
     </style>
   
 
@@ -123,7 +123,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" class="login-body">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -9552,33 +9552,38 @@ c0 -5 -7 -8 -15 -8 -17 0 -18 2 -9 25 5 13 8 14 15 3 5 -7 9 -16 9 -20z"></path>
 
 
 
-<div class="login-container">
-  <div class="login-frame">
-    <div class="login-banner">
-      <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/assets/img/login-banner.png" data-desc-position="bottom"><img class="login-banner-img" src="/assets/img/login-banner.png" alt="Banner de bienvenida"></a>
-    </div>
-    <div class="login-card-wrapper">
-      <div class="login-card">
-        <!-- <div class="login-header">
-          <h1></h1>
-        </div> -->
-        <form id="login-form" action="/login" method="post">
-          <div class="form-group">
-            <input type="text" id="user" name="user" required placeholder="User">
-          </div>
-          <div class="form-group">
-            <input type="password" id="pass" name="pass" required placeholder="Password">
-          </div>
-          <button type="submit" class="md-button" id="login-button">
-            <span class="btn-text">Login</span>
-            <span class="btn-spinner sr-only" id="btn-spinner"></span>
-          </button>
-        </form>
-        <div id="error" class="error-message">Incorrect username or password.</div>
+
+  <div class="login-container">
+    <div class="login-frame">
+      <div class="login-banner">
+          <h1 class="banner-title">
+              <span class="title-big">GwaIO</span>
+              <span class="title-small"> Docs</span>
+          </h1>
+      </div>
+      <div class="login-card-wrapper">
+        <div class="login-card">
+          <!-- <div class="login-header">
+            <h1></h1>
+          </div> -->
+          <form id="login-form" action="/login" method="post">
+            <div class="form-group">
+              <input type="text" id="user" name="user" required placeholder="User">
+            </div>
+            <div class="form-group">
+              <input type="password" id="pass" name="pass" required placeholder="Password">
+            </div>
+            <button type="submit" class="login-button" id="login-button">
+              <span class="btn-text">Login</span>
+              <span class="btn-spinner sr-only" id="btn-spinner"></span>
+            </button>
+          </form>
+          <div id="error" class="error-message">Incorrect username or password.</div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
 
 
 

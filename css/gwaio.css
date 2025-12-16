@@ -25,7 +25,7 @@ object-fit: cover;
 
 /* Botones con borde redondeado y contenido centrado */
 .md-button.md-button--primary {
-border-radius: 10px;
+border-radius: 0.5rem;
 text-align: center;    /* Centra el texto dentro del botón */
 padding: 15px;         /* Espaciado interno */
 /* Se ha eliminado el fondo blanco */

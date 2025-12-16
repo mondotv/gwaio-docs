@@ -10,23 +10,41 @@
     border: 0;
 }
 
+.login-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: Inter, system-ui, sans-serif;
+    color: var(--md-default-fg-color);
+    margin: 0px;
+    padding: 0px;
+    background: var(--md-default-bg-color);
+    transition: background-color var(--transition), color var(--transition);
+}
+
 .login-banner-img{
     border-radius: 0px;
 }
 
 .login-container {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--md-primary-fg);
-  padding-top: 2rem;
+  background: var(--md-default-bg-color);
+  padding: 2rem;
+  min-height: calc(100vh - 4rem);
 }
 
 .login-frame {
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 1);
-  background: rgba(var(--md-sys-color-surface-container-highest-rgb), 0.8);
+  background: rgba(35, 35, 40, 0.85);
   backdrop-filter: blur(10px);
+  overflow: hidden;
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .login-card-wrapper {
@@ -44,17 +62,40 @@
 }
 
 .login-banner {
-    width: 100%;
-    overflow: hidden;
-    border-top-left-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  min-height: 6rem;
+  background-color: rgb(45,48,56);
+  text-align: center;
 }
 
 .login-banner img {
     width: 100%;
     height: 100%;
+}
+
+
+.banner-title {
+  margin: 0 !important;
+  padding: 0;
+  font-family: 'Retro Gaming', sans-serif;
+  color: rgb(201,201,201);
+  text-shadow:
+    2px 2px 2px rgba(0,0,0,0.2),
+    -2px -2px 2px rgba(0,0,0,0.2),
+    2px -2px 2px rgba(0,0,0,0.2),
+    -2px 2px 2px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+
+.banner-title .title-big {
+  font-size: 2.8rem;
+  margin-right: 0.3rem;
+}
+.banner-title .title-small {
+  font-size: 1.6rem;
 }
 
 .form-group {
@@ -80,13 +121,34 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.login-button {
+  width: calc(100% - 2rem);
+  margin: 1.5rem 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  background: var(--md-primary-fg-color);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-button:hover {
+  background: var(--md-primary-fg-color--light);
+  transform: translateY(-2px);
+}
+
 button.md-button {
   width: calc(100% - 2rem);
   margin: 1.5rem 1rem;
   padding: 0.75rem;
   font-size: 1rem;
   border-radius: 0.5rem;
-  background: var(--md-sys-color-primary);
+  background: var(--md-primary-fg-color);
   color: var(--md-sys-color-on-primary);
   border: none;
   cursor: pointer;
@@ -97,7 +159,7 @@ button.md-button {
   align-items: center;
 }
 button.md-button:hover {
-  background: var(--md-sys-color-primary-container);
+  background: var(--md-primary-fg-color--light);
   transform: translateY(-2px);
 }
 
