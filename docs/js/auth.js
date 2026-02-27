@@ -1,6 +1,6 @@
 (function() {
   const LOGIN_PATH   = '/login/';
-  const API_TOKEN    = 'https://mondotv-api.herokuapp.com/api/v1/session/token';
+  const API_TOKEN    = 'https://gwaio-0fb226784267.herokuapp.com/api/v1/session/token';
   const STORAGE_KEY  = 'mkdocs_auth_token';
   const TIME_KEY     = 'mkdocs_auth_time';
   const REDIRECT_KEY = 'mkdocs_auth_target';
