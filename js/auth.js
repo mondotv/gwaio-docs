@@ -108,7 +108,7 @@
         console.error('Login failed:', err);
         const errorDiv = document.getElementById('error');
         if (errorDiv) {
-            errorDiv.textContent = 'Usuario o contraseña incorrectos';
+            errorDiv.textContent = 'Incorrect username or password.';
             errorDiv.style.display = 'block';
         }
       } finally {
