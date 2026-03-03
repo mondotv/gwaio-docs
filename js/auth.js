@@ -1,10 +1,43 @@
 (function() {
-  const LOGIN_PATH   = '/login/';
   const API_TOKEN    = 'https://gwaio-0fb226784267.herokuapp.com/api/v1/session/token';
   const STORAGE_KEY  = 'mkdocs_auth_token';
   const TIME_KEY     = 'mkdocs_auth_time';
   const REDIRECT_KEY = 'mkdocs_auth_target';
   const SESSION_TTL  = 60 * 60 * 1000;
+
+  function ensureTrailingSlash(path) {
+    return path.endsWith('/') ? path : `${path}/`;
+  }
+
+  function getSiteRootUrl() {
+    if (window.__md_scope && typeof window.__md_scope.href === 'string') {
+      return new URL('./', window.__md_scope);
+    }
+
+    const authScript = document.currentScript || Array.from(document.scripts).find(script => {
+      if (!script.src) return false;
+      try {
+        return new URL(script.src, window.location.href).pathname.endsWith('/js/auth.js');
+      } catch (error) {
+        return false;
+      }
+    });
+
+    if (authScript && authScript.src) {
+      return new URL('../', new URL(authScript.src, window.location.href));
+    }
+
+    if (window.location.pathname.endsWith('/login/')) {
+      return new URL('../', window.location.href);
+    }
+
+    return new URL('/', window.location.href);
+  }
+
+  const SITE_ROOT_URL = getSiteRootUrl();
+  const SITE_ROOT     = ensureTrailingSlash(SITE_ROOT_URL.pathname);
+  const LOGIN_URL     = new URL('login/', SITE_ROOT_URL);
+  const LOGIN_PATH    = ensureTrailingSlash(LOGIN_URL.pathname);
 
   function isSessionValid() {
     const token = localStorage.getItem(STORAGE_KEY);
@@ -25,6 +58,8 @@
   function handleLoginForm() {
     const form = document.getElementById('login-form');
     if (!form) return;
+
+    form.action = '.';
 
     const loginButton = document.getElementById('login-button');
     const spinner = document.getElementById('btn-spinner');
@@ -65,7 +100,7 @@
         }
 
         startSession(token);
-        const target = sessionStorage.getItem(REDIRECT_KEY) || '/';
+        const target = sessionStorage.getItem(REDIRECT_KEY) || SITE_ROOT;
         sessionStorage.removeItem(REDIRECT_KEY);
         window.location.replace(target);
 
@@ -87,8 +122,8 @@
   }
 
   async function requireLogin() {
-    const path = window.location.pathname;
-    if (path.startsWith(LOGIN_PATH)) {
+    const path = ensureTrailingSlash(window.location.pathname);
+    if (path === LOGIN_PATH) {
       document.documentElement.style.visibility = '';
       handleLoginForm();
       return;
@@ -96,8 +131,11 @@
 
     if (!isSessionValid()) {
       clearSession();
-      sessionStorage.setItem(REDIRECT_KEY, path + window.location.search);
-      window.location.replace(LOGIN_PATH);
+      sessionStorage.setItem(
+        REDIRECT_KEY,
+        window.location.pathname + window.location.search + window.location.hash
+      );
+      window.location.replace(LOGIN_URL.href);
     } else {
       startSession(localStorage.getItem(STORAGE_KEY));
       document.documentElement.style.visibility = '';
