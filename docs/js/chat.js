@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  const excludedPaths = ["/login/"];
+  const currentPath = window.location.pathname.endsWith("/")
+    ? window.location.pathname
+    : `${window.location.pathname}/`;
 
   // Verifica si la ruta actual está en la lista
-  if (excludedPaths.includes(window.location.pathname)) {
+  if (currentPath.endsWith("/login/")) {
     return; // Detiene la ejecución del bot
   }
   let funnyMessages;

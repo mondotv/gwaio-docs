@@ -10,8 +10,7 @@ copyright: Copyright &copy; 2025 Mondo TV Studios
 theme:
   name: material
   custom_dir: material/overrides
-  icon: 
-    logo: gwaio-icon
+  logo: assets/logos/gwaio-favicon.ico
   favicon: assets/logos/gwaio-favicon.ico
   palette:
     - scheme: default
