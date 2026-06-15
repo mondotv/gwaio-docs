@@ -3,11 +3,11 @@
 {% block extrahead %}
   {{ super() }}
 
-  <script>
+  <!-- <script>
     document.documentElement.style.visibility = 'hidden';
-  </script>
+  </script> -->
 
-  {% if page is defined and page.file is defined and page.file.src_path == "login.md" %}
+  <!-- {% if page is defined and page.file is defined and page.file.src_path == "login.md" %}
     <style>
       .md-header,
       .md-footer,
@@ -28,6 +28,6 @@
         padding: 2rem;
       }
     </style>
-  {% endif %}
+  {% endif %} -->
 {% endblock %}
 

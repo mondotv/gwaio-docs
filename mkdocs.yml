@@ -13,17 +13,14 @@ theme:
   logo: assets/logos/gwaio-favicon.ico
   favicon: assets/logos/gwaio-favicon.ico
   palette:
-    - scheme: default
-      # accent: deep purple
-      toggle:
-        icon: material/weather-sunny
-        name: Tema claro
     - scheme: slate
-      # accent: deep purple
       toggle:
         icon: material/weather-night
         name: Tema oscuro
-      media: "(prefers-color-scheme: dark)"
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Tema claro
   features:
     - content.code.copy
     - content.code.select
@@ -86,7 +83,7 @@ extra_css:
 
 extra_javascript:
   - js/chat.js
-  - js/auth.js
+  # - js/auth.js
 
 
 plugins:
